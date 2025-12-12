@@ -67,10 +67,12 @@
 
     /* --- HERO (BIENVENIDA) --- */
     .hero {
-      padding: 80px 0 100px;
+      padding: 80px 0 80px;
       text-align: center;
       max-width: 800px;
       margin: 0 auto;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 60px;
     }
     
     .hero-avatar {
@@ -93,8 +95,61 @@
     .btn-linkedin { background-color: var(--linkedin); color: #fff; }
     .btn-linkedin:hover { transform: translateY(-2px); background: #005e93; }
 
+    /* --- SECCIÓN NUEVA: SOBRE MÍ (EDUCACIÓN Y HOBBIES) --- */
+    .about-section {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr; /* Columna izq más ancha */
+      gap: 60px;
+      margin-bottom: 100px;
+      background: var(--white);
+      padding: 40px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-light);
+    }
+    
+    /* Línea de tiempo Educación */
+    .timeline-item {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 30px;
+      border-left: 2px solid var(--accent);
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 5px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--accent);
+    }
+    .timeline-item h4 { margin-bottom: 2px; font-size: 1.1rem; }
+    .timeline-item .school { font-weight: 700; color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .timeline-item .desc { font-size: 0.9rem; color: #888; margin-top: 5px; }
+
+    /* Hobbies y Lenguajes */
+    .info-box { margin-bottom: 30px; }
+    .hobbies-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+    .hobby-card {
+      text-align: center;
+      padding: 15px;
+      background: #fafafa;
+      border-radius: 8px;
+      transition: 0.2s;
+    }
+    .hobby-card:hover { background: #f0f0f0; }
+    .hobby-card i { color: var(--accent); font-size: 1.5rem; margin-bottom: 8px; }
+    .hobby-card span { display: block; font-size: 0.9rem; font-weight: 700; }
+
     /* --- PROYECTOS GRID --- */
-    .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 10px; margin-top: 60px; }
+    .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 10px; }
     .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 50px; }
 
     .grid {
@@ -135,7 +190,11 @@
     .footer-cta { background: var(--text-main); color: var(--white); padding: 60px 0; text-align: center; border-radius: var(--radius); margin-bottom: 40px; }
     footer { text-align: center; padding: 20px 0; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border-light); }
 
-    @media (max-width: 768px) { .nav-flex { flex-direction: column; gap: 15px; } .hero h1 { font-size: 2.5rem; } }
+    @media (max-width: 768px) { 
+      .nav-flex { flex-direction: column; gap: 15px; } 
+      .hero h1 { font-size: 2.5rem; }
+      .about-section { grid-template-columns: 1fr; gap: 40px; } /* Apilar columnas en móvil */
+    }
   </style>
 </head>
 <body>
@@ -146,7 +205,7 @@
       <nav>
         <ul>
           <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#sobre-mi">Sobre Mí</a></li> <li><a href="#proyectos">Proyectos</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </nav>
@@ -164,10 +223,71 @@
       
       <div class="hero-buttons">
         <a href="#proyectos" class="btn btn-primary">Ver mis 11 Proyectos</a>
-        
         <a href="https://www.linkedin.com/" target="_blank" class="btn btn-linkedin">
           <i class="fab fa-linkedin"></i> LinkedIn
         </a>
+      </div>
+    </section>
+
+    <section id="sobre-mi" class="about-section">
+      <div class="col-edu">
+        <h2 style="margin-bottom: 25px;">Formación Académica</h2>
+        
+        <div class="timeline-item">
+          <h4>Tecnología en Desarrollo de Software</h4>
+          <div class="school">Instituto Superior (En Curso)</div>
+          <p class="desc">Formación actual en programación, bases de datos y desarrollo web.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Educación Secundaria</h4>
+          <div class="school">Colegio "Victoria Vasconez Cuvi"</div>
+          <p class="desc">Bachillerato General Unificado.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Educación Básica Superior</h4>
+          <div class="school">Unidad Educativa "Naciones Unidas"</div>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Educación Inicial / Primaria</h4>
+          <div class="school">Escuela Fiscal Mixta "Zamora"</div>
+        </div>
+      </div>
+
+      <div class="col-misc">
+        
+        <div class="info-box">
+          <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Idiomas</h3>
+          <p>
+            <strong>Español:</strong> Nativo<br>
+            <strong>Inglés:</strong> Nivel Intermedio (Lectura y Escritura)
+          </p>
+        </div>
+
+        <div class="info-box">
+          <h3 style="font-size: 1.5rem; margin-bottom: 20px;">Pasatiempos</h3>
+          <div class="hobbies-grid">
+            <div class="hobby-card">
+              <i class="fas fa-headphones"></i>
+              <span>Música</span>
+            </div>
+            <div class="hobby-card">
+              <i class="fas fa-book-open"></i>
+              <span>Leer</span>
+            </div>
+            <div class="hobby-card">
+              <i class="fas fa-gamepad"></i>
+              <span>Jugar</span>
+            </div>
+            <div class="hobby-card">
+              <i class="fas fa-laptop-code"></i>
+              <span>Codear</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
