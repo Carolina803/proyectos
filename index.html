@@ -3,29 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio | Carolina803</title>
+    <title>Portafolio Profesional | Carolina</title>
+
     <style>
         body {
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #f7f7f7;
-            color: #333;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #222;
         }
 
-        /* ENCABEZADO */
+        /* ====================== HEADER ====================== */
         header {
-            background: #1a1a1a;
-            padding: 20px;
+            background: #0a0a0a;
             color: white;
+            padding: 35px;
             text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
         }
 
         header h1 {
             margin: 0;
-            font-size: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
         }
 
-        /* SECCIÓN DE PRESENTACIÓN */
+        header p {
+            margin: 5px 0 0;
+            font-size: 1.1rem;
+            opacity: 0.85;
+        }
+
+        /* ====================== HERO ====================== */
         .hero {
             padding: 60px 20px;
             text-align: center;
@@ -33,41 +42,74 @@
         }
 
         .hero h2 {
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             margin-bottom: 10px;
+            font-weight: 700;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
+            max-width: 700px;
             margin: auto;
+            font-size: 1.2rem;
             color: #555;
         }
 
-        /* SECCIÓN DE PROYECTOS */
-        .projects {
+        /* ====================== SKILLS ====================== */
+        .skills {
+            background: #ffffff;
+            margin: 40px auto;
             padding: 40px 20px;
+            max-width: 1100px;
+            border-radius: 15px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .skills h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 2rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .tag {
+            background: #0a0a0a;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 1rem;
+        }
+
+        /* ====================== PROJECTS ====================== */
+        .projects {
+            padding: 50px 20px;
             max-width: 1100px;
             margin: auto;
         }
 
         .projects h2 {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
+            font-size: 2rem;
         }
 
         .card-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
         }
 
         .card {
             background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            transition: transform 0.25s ease;
         }
 
         .card:hover {
@@ -76,80 +118,100 @@
 
         .card h3 {
             margin-top: 0;
+            font-size: 1.4rem;
         }
 
         .card p {
             color: #555;
+            line-height: 1.4rem;
         }
 
         .card a {
             display: inline-block;
-            margin-top: 10px;
-            padding: 8px 15px;
+            margin-top: 12px;
+            padding: 10px 18px;
             text-decoration: none;
-            background: #1a1a1a;
+            background: #0a0a0a;
             color: white;
-            border-radius: 5px;
-            transition: background 0.2s;
+            border-radius: 8px;
+            transition: background 0.3s;
         }
 
         .card a:hover {
-            background: #444;
+            background: #333;
         }
 
-        /* PIE DE PÁGINA */
+        /* ====================== FOOTER ====================== */
         footer {
-            background: #1a1a1a;
-            padding: 20px;
+            background: #0a0a0a;
             text-align: center;
+            padding: 20px;
             color: white;
-            margin-top: 40px;
+            margin-top: 50px;
+            font-size: 0.9rem;
         }
+
     </style>
 </head>
+
 <body>
 
-    <!-- ENCABEZADO -->
+    <!-- ====================== HEADER ====================== -->
     <header>
-        <h1>Portafolio de Carolina803</h1>
+        <h1>Portafolio Profesional de Carolina</h1>
+        <p>Desarrolladora Web | Python | Django</p>
     </header>
 
-    <!-- PRESENTACIÓN -->
+    <!-- ====================== HERO ====================== -->
     <section class="hero">
-        <h2>¡Bienvenidos!</h2>
-        <p>Este es mi portafolio profesional donde publico mis proyectos, trabajos y actividades desarrolladas.</p>
+        <h2>Bienvenida a mi Portafolio</h2>
+        <p>
+            Soy desarrolladora con experiencia en creación de aplicaciones web usando 
+            <strong>Django, Python, HTML, CSS y GitHub Pages</strong>.  
+            Aquí podrás ver mis proyectos, mis habilidades y lo que puedo aportar a tu empresa.
+        </p>
     </section>
 
-    <!-- PROYECTOS -->
+    <!-- ====================== SKILLS ====================== -->
+    <section class="skills">
+        <h2>Habilidades Técnicas</h2>
+
+        <div class="skill-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Django</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">Git</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Despliegue Web</span>
+            <span class="tag">Resolución de Problemas</span>
+        </div>
+    </section>
+
+    <!-- ====================== PROJECTS ====================== -->
     <section class="projects">
-        <h2>Mis Proyectos</h2>
+        <h2>Proyectos Destacados</h2>
 
         <div class="card-container">
 
+            <!-- TARJETA PROFESIONAL DEL PROYECTO DJANGO -->
             <div class="card">
-                <h3>Proyecto 1</h3>
-                <p>Descripción breve del proyecto que realizaste o que quieres mostrar.</p>
-                <a href="#">Ver proyecto</a>
-            </div>
-
-            <div class="card">
-                <h3>Proyecto 2</h3>
-                <p>Incluye aquí información sobre otro proyecto importante o una práctica.</p>
-                <a href="#">Ver proyecto</a>
-            </div>
-
-            <div class="card">
-                <h3>Proyecto 3</h3>
-                <p>Agrega tantos proyectos como quieras, esta plantilla es totalmente flexible.</p>
-                <a href="#">Ver proyecto</a>
+                <h3>Gestión de Jardineros – Django</h3>
+                <p>
+                    Aplicación desarrollada en Django que permite administrar jardineros, 
+                    gestionar información, realizar operaciones CRUD y visualizar datos en una 
+                    interfaz funcional. Proyecto desplegado profesionalmente en PythonAnywhere.
+                </p>
+                <a href="https://deysi.pythonanywhere.com/jardineros/" target="_blank">Ver Proyecto</a>
             </div>
 
         </div>
     </section>
 
-    <!-- PIE DE PÁGINA -->
+    <!-- ====================== FOOTER ====================== -->
     <footer>
-        © 2025 - Portafolio de Carolina803
+        © 2025 Carolina – Portafolio Profesional. Todos los derechos reservados.
     </footer>
 
 </body>
