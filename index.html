@@ -33,7 +33,14 @@
     nav{display:flex;gap:18px}
     nav a{font-weight:600;color:var(--muted);font-size:0.95rem}
 
-    .hero{background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.35));border-radius:20px;padding:48px;text-align:center;box-shadow:var(--shadow);margin-top:12px}
+    .hero{background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.35));border-radius:20px;padding:28px;text-align:center;box-shadow:var(--shadow);margin-top:12px;display:flex;gap:18px;align-items:center;justify-content:center}
+    .hero .avatar{width:120px;height:120px;border-radius:14px;overflow:hidden;flex-shrink:0}
+    .hero .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero .hero-content{text-align:left}
+    .hero .hero-content h1{font-size:1.6rem;margin:0;font-weight:800}
+    .hero .hero-content .lead{color:var(--muted);margin-top:6px;font-weight:500}
+    .hero .actions{margin-top:12px}
+    .hero .actions .btn{padding:10px 16px}
     .hero h1{font-size:2.6rem;margin:0;font-weight:800}
     .hero .lead{color:var(--muted);margin-top:8px;font-weight:500}
     .meta{color:var(--muted);margin-top:6px}
@@ -46,7 +53,8 @@
     .about p{margin:0;color:var(--muted);line-height:1.65}
 
     /* Grid de proyectos tipo mosaico */
-    .projects-wrap{margin-top:42px}
+    .projects-wrap{margin-top:42px;display:none}
+    .projec
     .projects-title{text-align:center;font-size:1.9rem;margin-bottom:20px;font-weight:700}
     .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 
@@ -76,28 +84,18 @@
   <header>
     <div class="wrap">
       <div class="top">
-        <div class="logo">Deysi Velásquez</div>
-        <nav aria-label="Navegación principal">
-          <a href="#proyectos">Proyectos</a>
-          <a href="#sobre-mi">Sobre mí</a>
-          <a href="#contacto">Contacto</a>
-        </nav>
-      </div>
-
-      <section class="hero">
-        <h1>Deysi Carolina Velásquez Varela</h1>
-        <div class="lead">Desarrolladora web — Front‑end y maquetación</div>
-        <div class="meta">21 años • +593 983 534 700 • carolina@example.com</div>
-      </section>
-    </div>
-  </header>
-
-  <main class="wrap" role="main">
-    <section id="sobre-mi" class="about">
-      <div class="photo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAzwAAAXACAIAAAAcFN7hAAAQAElEQVR4AcT9B5tsW1be+S4TJnPnNscURu72NZ+o+7Yk1DLdaqn7" alt="Foto de Deysi" style="width:100%;height:100%;object-fit:cover;border-radius:14px;"></div>
+        <div class="logo">Deysi Velásquez<<section id="sobre-mi" class="about">
+      <div class="photo"><img src="/assets/tu-foto.jpg" alt="Foto de Deysi" style="width:100%;height:100%;object-fit:cover;border-radius:14px;"></div>
       <div class="card">
         <h2>Sobre mí</h2>
-        <p>Soy Deysi, me dedico a crear páginas y pequeñas aplicaciones con enfoque en simplicidad, usabilidad y mantenimiento. Trabajo principalmente con HTML y CSS, y para proyectos con base de datos utilizo gestores ligeros. Este sitio es un index.html pensado para presentar mis trabajos de forma rápida y profesional, sin dependencias externas.</p>
+        <p>Soy Deysi Carolina Velásquez Varela. Me dedico a crear páginas y pequeñas aplicaciones con enfoque en simplicidad, usabilidad y mantenimiento. Trabajo principalmente con HTML y CSS, y para proyectos con base de datos utilizo gestores ligeros. Este sitio es un index.html pensado para presentar mis trabajos de forma rápida y profesional.</p>
+        <p style="margin-top:10px">Si pulsas "Ver proyectos" verás la lista completa de trabajos publicados en mis repositorios.</p>
+        <div style="margin-top:14px;display:flex;gap:10px" class="actions">
+          <button class="btn" id="toggleProjects">Ver proyectos</button>
+          <a class="tag" href="#contacto">Contacto</a>
+        </div>
+      </div>
+    </section>dad, usabilidad y mantenimiento. Trabajo principalmente con HTML y CSS, y para proyectos con base de datos utilizo gestores ligeros. Este sitio es un index.html pensado para presentar mis trabajos de forma rápida y profesional, sin dependencias externas.</p>
         <p style="margin-top:10px">Me interesa entregar resultados que funcionen en distintas pantallas, con buena accesibilidad básica y código ordenado. Me adapto a equipos pequeños y a proyectos donde se valora la claridad y la rapidez.</p>
       </div>
     </section>
@@ -180,10 +178,79 @@
           </div>
           <div class="project-footer">
             <div class="tag">Backoffice</div>
-            <a class="btn" href="https://g
+            <a class="btn" href="https://gitlab.com/mbue-j2d-group/gestionpuestos" target="_blank" rel="noopener">Ver repositorio</a>
+          </div>
+        </article>
 
-    <section id="contacto" style="margin-top:34px">
+        <article class="card-project" role="listitem">
+          <div class="project-thumb" style="background-image:url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80')" aria-hidden="true"></div>
+          <div class="project-body">
+            <h3>MuralesUrbanos</h3>
+            <p>Proyecto visual sobre murales y arte urbano con contenido multimedia.</p>
+            <p class="small">Fecha: July 21, 2025</p>
+          </div>
+          <div class="project-footer">
+            <div class="tag">Multimedia</div>
+            <a class="btn" href="https://gitlab.com/CarolinaVelasquez/muralesurbanos" target="_blank" rel="noopener">Ver repositorio</a>
+          </div>
+        </article>
+
+        <article class="card-project" role="listitem">
+          <div class="project-thumb" style="background-image:url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80')" aria-hidden="true"></div>
+          <div class="project-body">
+            <h3>Puntos Turísticos (MBUE)</h3>
+            <p>Listado y fichas de puntos de interés para turismo local.</p>
+            <p class="small">Fecha: June 12, 2025</p>
+          </div>
+          <div class="project-footer">
+            <div class="tag">Geo / Turismo</div>
+            <a class="btn" href="https://gitlab.com/mbue-j2d-group/puntos_turisticos" target="_blank" rel="noopener">Ver repositorio</a>
+          </div>
+        </article>
+
+        <article class="card-project" role="listitem">
+          <div class="project-thumb" style="background-image:url('https://images.unsplash.com/photo-1473625247510-8ceb1760943f?auto=format&fit=crop&w=1200&q=80')" aria-hidden="true"></div>
+          <div class="project-body">
+            <h3>Puntos Turísticos (Carolina)</h3>
+            <p>Versión personal de puntos turísticos con recursos y notas.</p>
+            <p class="small">Fecha: (no disponible)</p>
+          </div>
+          <div class="project-footer">
+            <div class="tag">Geo / Turismo</div>
+            <a class="btn" href="https://gitlab.com/CarolinaVelasquez/puntos_turisticos" target="_blank" rel="noopener">Ver repositorio</a>
+          </div>
+        </article>
+
+        <article class="card-project" role="listitem">
+          <div class="project-thumb" style="background-image:url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80')" aria-hidden="true"></div>
+          <div class="project-body">
+            <h3>TourismC2</h3>
+            <p>Proyecto orientado a mostrar recursos turísticos y rutas.</p>
+            <p class="small">Fecha: (no disponible)</p>
+          </div>
+          <div class="project-footer">
+            <div class="tag">Turismo</div>
+            <a class="btn" href="https://gitlab.com/CarolinaVelasquez/tourismc2" target="_blank" rel="noopener">Ver repositorio</a>
+          </div>
+        </article>
+
+        <article class="card-project" role="listitem">
+          <div class="project-thumb" style="background-image:url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80')" aria<section id="contacto" style="margin-top:34px">
       <div class="contact-card">
+        <div class="contact-left">
+          <strong>Contacto</strong>
+          <p style="margin-top:6px">Latacunga • Tel: 0983534700</p>
+          <p style="margin-top:6px">Email: <a href="mailto:deysi.velasquez1417@utc.edu.ec">deysi.velasquez1417@utc.edu.ec</a></p>
+          <p style="margin-top:6px">Nombre: Deysi Carolina Velásquez Varela</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-end">
+          <a class="btn" href="mailto:deysi.velasquez1417@utc.edu.ec">Enviar email</a>
+          <a class="tag" href="#">Descargar CV</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>d">
         <div class="contact-left">
           <strong>¿Hablamos?</strong>
           <p style="margin-top:6px">Si tienes un proyecto pequeño o necesitas una página sencilla, escríbeme. Respondo rápido y me adapto a necesidades prácticas.</p>
