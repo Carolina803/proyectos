@@ -10,21 +10,20 @@
 
   <style>
     :root {
-      /* Paleta Original "Editorial" */
+      /* Estilo Editorial Profesional */
       --bg: #fcfbf9;
       --white: #ffffff;
       --text-main: #2c2c2c;
       --text-muted: #666666;
-      --accent: #b08d55;
+      --accent: #b08d55;       /* Dorado elegante */
       --accent-hover: #8f703e;
-      --linkedin: #0077b5; /* Color LinkedIn */
+      --linkedin: #0077b5;
       --border-light: #eaeaea;
       --shadow-sm: 0 4px 6px rgba(0,0,0,0.02);
       --shadow-md: 0 12px 24px rgba(0,0,0,0.06);
       --radius: 8px;
     }
 
-    /* Reset básico */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     body {
@@ -50,7 +49,7 @@
       padding: 0 24px;
     }
 
-    /* --- HEADER / NAV --- */
+    /* --- HEADER --- */
     header {
       position: sticky;
       top: 0;
@@ -60,144 +59,43 @@
       border-bottom: 1px solid var(--border-light);
       padding: 20px 0;
     }
-    .nav-flex {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .brand {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
+    .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+    .brand { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; }
     nav ul { display: flex; list-style: none; gap: 30px; }
-    nav a {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text-muted);
-      font-weight: 700;
-    }
-    nav a:hover, nav a.active { color: var(--accent); }
+    nav a { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 700; }
+    nav a:hover { color: var(--accent); }
 
-    /* --- HERO SECTION --- */
+    /* --- HERO (BIENVENIDA) --- */
     .hero {
-      padding: 120px 0 100px;
+      padding: 80px 0 100px;
       text-align: center;
       max-width: 800px;
       margin: 0 auto;
     }
-    /* Foto eliminada según petición "borra mi boto/foto" */
     
-    .hero h4 {
-      font-size: 1.2rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 16px;
-    }
-    .hero h1 {
-      font-size: 3.8rem;
-      line-height: 1.1;
+    /* ESTILO DE LA FOTO CORREGIDO */
+    .hero-avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
       margin-bottom: 24px;
-    }
-    .hero p {
-      font-size: 1.25rem;
-      color: var(--text-muted);
-      margin-bottom: 40px;
-      font-weight: 300;
-      padding: 0 20px;
-    }
-    .hero-buttons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
+      border: 4px solid var(--white);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra elegante */
     }
 
-    /* Botones */
-    .btn {
-      padding: 14px 28px;
-      border-radius: 4px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      letter-spacing: 0.5px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s;
-    }
-    .btn-primary {
-      background-color: var(--accent);
-      color: #fff;
-      box-shadow: 0 4px 15px rgba(176, 141, 85, 0.3);
-    }
-    .btn-primary:hover { background-color: var(--accent-hover); transform: translateY(-2px); }
+    .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; }
+    .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px; font-weight: 300; }
     
-    .btn-linkedin {
-      background-color: var(--linkedin);
-      color: #fff;
-      box-shadow: 0 4px 15px rgba(0, 119, 181, 0.2);
-    }
-    .btn-linkedin:hover { background-color: #005e93; transform: translateY(-2px); }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn { padding: 12px 28px; border-radius: 4px; font-weight: 700; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+    .btn-primary { background-color: var(--accent); color: #fff; box-shadow: 0 4px 15px rgba(176, 141, 85, 0.3); }
+    .btn-primary:hover { transform: translateY(-2px); background: var(--accent-hover); }
+    .btn-linkedin { background-color: var(--linkedin); color: #fff; }
+    .btn-linkedin:hover { transform: translateY(-2px); background: #005e93; }
 
-    .btn-outline {
-      background: transparent;
-      border: 1px solid var(--border-light);
-      color: var(--text-muted);
-    }
-    .btn-outline:hover { border-color: var(--text-main); color: var(--text-main); }
-
-    /* --- NUEVA SECCIÓN: SOBRE MÍ & SKILLS --- */
-    .about-container {
-      background: var(--white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius);
-      padding: 40px;
-      margin-bottom: 80px;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 50px;
-      align-items: start;
-      box-shadow: var(--shadow-sm);
-    }
-    
-    .about-info h3 { font-size: 1.8rem; margin-bottom: 20px; }
-    .about-info p { color: var(--text-muted); margin-bottom: 20px; font-size: 1rem; }
-    
-    .education-box {
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border-light);
-    }
-    .education-box strong { display: block; color: var(--text-main); font-size: 1.1rem; }
-
-    /* Barras de Habilidad */
-    .skill-box { margin-bottom: 18px; }
-    .skill-header {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-    .progress-track {
-      background: #f0f0f0;
-      height: 8px;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    .progress-fill {
-      height: 100%;
-      background: var(--accent);
-      border-radius: 4px;
-    }
-
-    /* --- PROYECTOS --- */
-    .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 10px; }
+    /* --- PROYECTOS GRID --- */
+    .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 10px; margin-top: 60px; }
     .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 50px; }
 
     .grid {
@@ -213,65 +111,32 @@
       border-radius: var(--radius);
       overflow: hidden;
       transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
+      display: flex; flex-direction: column; height: 100%;
     }
-    .card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); }
+    .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: transparent; }
 
-    .card-body { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
-    .card h3 { font-size: 1.3rem; margin-bottom: 10px; }
-    
-    .tag {
-      font-size: 0.75rem;
-      background: #f4f4f4;
-      padding: 4px 8px;
-      border-radius: 4px;
-      color: var(--text-muted);
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      display: inline-block;
-    }
-    .tag.highlight { background: #fdf6e9; color: var(--accent-hover); }
+    .card-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+    .card h3 { font-size: 1.2rem; margin-bottom: 8px; }
+    .card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px; flex-grow: 1; }
 
-    .card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px; flex-grow: 1; }
+    /* Etiquetas (Tags) */
+    .tag { font-size: 0.7rem; padding: 4px 8px; border-radius: 4px; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; display: inline-block; }
+    .tag.group { background: #eef2ff; color: #4f46e5; } /* Azulito para Grupal */
+    .tag.personal { background: #fdf6e9; color: #b08d55; } /* Dorado para Personal */
 
     .card-footer {
       border-top: 1px solid var(--border-light);
       padding: 15px 25px;
       background: #fafafa;
-      display: flex;
-      justify-content: space-between;
     }
-    .link-proj { font-size: 0.9rem; font-weight: 700; color: var(--accent); }
-    .link-proj:hover { color: var(--accent-hover); text-decoration: underline; }
+    .link-proj { font-size: 0.85rem; font-weight: 700; color: var(--accent); }
+    .link-proj:hover { text-decoration: underline; color: var(--accent-hover); }
 
     /* --- FOOTER --- */
-    .footer-cta {
-      background: var(--text-main);
-      color: var(--white);
-      padding: 60px 0;
-      text-align: center;
-      border-radius: var(--radius);
-    }
-    .footer-cta h2 { color: var(--white); }
-    .footer-cta p { color: #aaa; margin-bottom: 24px; }
-    
-    footer {
-      text-align: center;
-      padding: 40px 0;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      border-top: 1px solid var(--border-light);
-      margin-top: 60px;
-    }
+    .footer-cta { background: var(--text-main); color: var(--white); padding: 60px 0; text-align: center; border-radius: var(--radius); margin-bottom: 40px; }
+    footer { text-align: center; padding: 20px 0; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border-light); }
 
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2.5rem; }
-      .about-container { grid-template-columns: 1fr; gap: 40px; }
-      .nav-flex { flex-direction: column; gap: 15px; }
-    }
+    @media (max-width: 768px) { .nav-flex { flex-direction: column; gap: 15px; } .hero h1 { font-size: 2.5rem; } }
   </style>
 </head>
 <body>
@@ -281,8 +146,8 @@
       <div class="brand">Deysi Carolina.</div>
       <nav>
         <ul>
-          <li><a href="#inicio" class="active">Inicio</a></li>
-          <li><a href="#proyectos">Portafolio</a></li>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </nav>
@@ -292,142 +157,143 @@
   <main class="container">
     
     <section id="inicio" class="hero">
-      <h4>Portafolio Profesional</h4>
-      <h1>Hola, soy Deysi Carolina<br>Desarrolladora Web</h1>
-      <p>Creando interfaces limpias y soluciones backend funcionales. Especializada en Django, despliegues en nube y trabajo colaborativo.</p>
+      <img src="assets/img/image.jpeg" alt="Deysi Carolina" class="hero-avatar">
+      
+      <h1>Desarrolladora Web &<br>Estudiante</h1>
+      <p>Creando interfaces limpias, código backend eficiente y soluciones digitales modernas. Portafolio de proyectos académicos y personales.</p>
       
       <div class="hero-buttons">
-        <a href="https://deysi.pythonanywhere.com/jardineros/" target="_blank" class="btn btn-primary">
-          <i class="fas fa-desktop"></i> Ver Demo en Vivo
-        </a>
-        
+        <a href="#proyectos" class="btn btn-primary">Ver mis 11 Proyectos</a>
         <a href="https://www.linkedin.com/" target="_blank" class="btn btn-linkedin">
           <i class="fab fa-linkedin"></i> LinkedIn
         </a>
-
-        <a href="#proyectos" class="btn btn-outline">Ver Proyectos</a>
-      </div>
-    </section>
-
-    <section class="about-container">
-      <div class="about-info">
-        <h3>Sobre mí</h3>
-        <p>Soy una desarrolladora web apasionada por crear aplicaciones funcionales y bien estructuradas. Mi enfoque combina la lógica del backend con Python y la estética del frontend limpio.</p>
-        <p>Actualmente me encuentro ampliando mis conocimientos en despliegue de aplicaciones y metodologías ágiles.</p>
-        
-        <div class="education-box">
-          <h4 style="font-size:1rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">Educación</h4>
-          <strong>Tecnología en Desarrollo de Software</strong>
-          <span style="color:var(--text-muted); font-size:0.95rem;">En curso — Ecuador</span>
-        </div>
-      </div>
-
-      <div class="about-skills">
-        <h3>Habilidades</h3>
-        
-        <div class="skill-box">
-          <div class="skill-header"><span>HTML5 & CSS3</span> <span>90%</span></div>
-          <div class="progress-track"><div class="progress-fill" style="width: 90%;"></div></div>
-        </div>
-        
-        <div class="skill-box">
-          <div class="skill-header"><span>Python & Django</span> <span>85%</span></div>
-          <div class="progress-track"><div class="progress-fill" style="width: 85%;"></div></div>
-        </div>
-        
-        <div class="skill-box">
-          <div class="skill-header"><span>Git & GitLab</span> <span>75%</span></div>
-          <div class="progress-track"><div class="progress-fill" style="width: 75%;"></div></div>
-        </div>
-        
-        <div class="skill-box">
-          <div class="skill-header"><span>Despliegue Web</span> <span>70%</span></div>
-          <div class="progress-track"><div class="progress-fill" style="width: 70%;"></div></div>
-        </div>
       </div>
     </section>
 
     <section id="proyectos">
-      <h2 class="section-title">Proyectos Destacados</h2>
-      <p class="section-subtitle">Selección de repositorios en GitLab y aplicaciones desplegadas.</p>
+      <h2 class="section-title">Portafolio de Proyectos</h2>
+      <p class="section-subtitle">Colección completa de repositorios desarrollados individualmente y en equipo.</p>
 
       <div class="grid">
-        
-        <article class="card">
-          <div class="card-body">
-            <span class="tag highlight">Django & PythonAnywhere</span>
-            <h3>Gestión de Jardineros</h3>
-            <p>Aplicación web completa desplegada en vivo. Sistema de gestión con base de datos real. El mejor ejemplo de mis capacidades actuales.</p>
-          </div>
-          <div class="card-footer">
-            <a href="https://github.com/Carolina803/proyectos" target="_blank" class="link-proj">Ver Código</a>
-            <a href="https://deysi.pythonanywhere.com/jardineros/" target="_blank" class="link-proj">Ver Demo Live →</a>
-          </div>
-        </article>
 
         <article class="card">
           <div class="card-body">
-            <span class="tag">GitLab Colaborativo</span>
+            <span class="tag group">Grupal / Colaborativo</span>
             <h3>Center Adoption</h3>
-            <p>Sistema para centros de adopción. Desarrollo en equipo utilizando control de versiones y metodologías ágiles.</p>
+            <p>Plataforma para gestión de centros de adopción. Trabajo en equipo enfocado en metodologías ágiles.</p>
           </div>
           <div class="card-footer">
-            <a href="https://gitlab.com/mbue-j2d-group/center_adoption" target="_blank" class="link-proj">Ver Repositorio</a>
+            <a href="https://gitlab.com/mbue-j2d-group/center_adoption" target="_blank" class="link-proj">Ver en GitLab <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
 
         <article class="card">
           <div class="card-body">
-            <span class="tag">Práctica Personal</span>
-            <h3>Cuidado Plantas</h3>
-            <p>Repositorio personal enfocado en lógica de negocio para el cuidado y mantenimiento de plantas.</p>
+            <span class="tag personal">Personal</span>
+            <h3>Cuidado de Plantas</h3>
+            <p>Sistema de gestión e información para el cuidado botánico. Proyecto individual.</p>
           </div>
           <div class="card-footer">
-            <a href="https://gitlab.com/CarolinaVelasquez/cuidado_plantas" target="_blank" class="link-proj">Ver Repositorio</a>
+            <a href="https://gitlab.com/CarolinaVelasquez/cuidado_plantas" target="_blank" class="link-proj">Ver en GitLab <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
 
         <article class="card">
           <div class="card-body">
-            <span class="tag">Gestión MBUE</span>
-            <h3>ZonaSegura</h3>
-            <p>Proyecto académico orientado a la seguridad en zonas específicas. Trabajo grupal con enfoque en backend.</p>
+            <span class="tag group">Grupal</span>
+            <h3>Ejercicio 9 (Gus Group)</h3>
+            <p>Resolución colaborativa de ejercicios de programación avanzada y lógica.</p>
           </div>
           <div class="card-footer">
-            <a href="https://gitlab.com/mbue-j2d-group/zonasegura" target="_blank" class="link-proj">Ver Repositorio</a>
+            <a href="https://gitlab.com/gus_05-group/ejercicio9" target="_blank" class="link-proj">Ver en GitLab <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
 
         <article class="card">
           <div class="card-body">
-            <span class="tag">Turismo</span>
-            <h3>Puntos Turísticos</h3>
-            <p>Versión personal del sistema de gestión turística. Manejo de ubicaciones y datos de interés.</p>
+            <span class="tag personal">Académico</span>
+            <h3>Evaluación 2CV</h3>
+            <p>Repositorio de evaluación práctica demostrando competencias de desarrollo web.</p>
           </div>
           <div class="card-footer">
-            <a href="https://gitlab.com/CarolinaVelasquez/puntos_turisticos" target="_blank" class="link-proj">Ver Repositorio</a>
+            <a href="https://gitlab.com/CarolinaVelasquez/evaluacion2cv" target="_blank" class="link-proj">Ver en GitLab <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
 
         <article class="card">
           <div class="card-body">
-            <span class="tag">Arte Urbano</span>
+            <span class="tag personal">Personal</span>
+            <h3>Geo2 CV</h3>
+            <p>Proyecto con enfoque geoespacial/geográfico desarrollado de manera individual.</p>
+          </div>
+          <div class="card-footer">
+            <a href="https://gitlab.com/CarolinaVelasquez/geo2_cv" target="_blank" class="link-proj">Ver en GitLab <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <span class="tag group">Grupal / MBUE</span>
+            <h3>Gestión de Puestos</h3>
+            <p>Sistema administrativo para la gestión de puestos de trabajo o ubicaciones.</p>
+          </div>
+          <div class="card-footer">
+            <a href="https://gitlab.com/mbue-j2d-group/gestionpuestos" target="_blank" class="link-proj">Ver en GitLab <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <span class="tag personal">Arte / Frontend</span>
             <h3>Murales Urbanos</h3>
-            <p>Catálogo digital de arte urbano. Proyecto personal para practicar estructuración de datos multimedia.</p>
+            <p>Catálogo digital visual para la exposición de arte urbano y muralismo.</p>
           </div>
           <div class="card-footer">
-            <a href="https://gitlab.com/CarolinaVelasquez/muralesurbanos" target="_blank" class="link-proj">Ver Repositorio</a>
+            <a href="https://gitlab.com/CarolinaVelasquez/muralesurbanos" target="_blank" class="link-proj">Ver en GitLab <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
 
         <article class="card">
           <div class="card-body">
-            <span class="tag">Académico</span>
-            <h3>Evaluacion2CV</h3>
-            <p>Repositorio de evaluación académica demostrando conocimientos fundamentales de programación.</p>
+            <span class="tag group">Grupal</span>
+            <h3>Puntos Turísticos (Team)</h3>
+            <p>Versión colaborativa del sistema de información turística y puntos de interés.</p>
           </div>
           <div class="card-footer">
-            <a href="https://gitlab.com/CarolinaVelasquez/evaluacion2cv" target="_blank" class="link-proj">Ver Repositorio</a>
+            <a href="https://gitlab.com/mbue-j2d-group/puntos_turisticos" target="_blank" class="link-proj">Ver en GitLab <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <span class="tag personal">Personal</span>
+            <h3>Puntos Turísticos (Ind)</h3>
+            <p>Implementación individual del proyecto de turismo, con características personalizadas.</p>
+          </div>
+          <div class="card-footer">
+            <a href="https://gitlab.com/CarolinaVelasquez/puntos_turisticos" target="_blank" class="link-proj">Ver en GitLab <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <span class="tag personal">Turismo</span>
+            <h3>Tourism C2</h3>
+            <p>Plataforma enfocada en servicios turísticos y experiencias de usuario.</p>
+          </div>
+          <div class="card-footer">
+            <a href="https://gitlab.com/CarolinaVelasquez/tourismc2" target="_blank" class="link-proj">Ver en GitLab <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <span class="tag group">Backend / Seguridad</span>
+            <h3>Zona Segura</h3>
+            <p>Proyecto enfocado en la seguridad ciudadana y reporte de zonas, desarrollado en grupo.</p>
+          </div>
+          <div class="card-footer">
+            <a href="https://gitlab.com/mbue-j2d-group/zonasegura" target="_blank" class="link-proj">Ver en GitLab <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
 
@@ -436,13 +302,13 @@
 
     <section id="contacto" class="footer-cta">
       <div class="container">
-        <h2>¿Listo para trabajar juntos?</h2>
-        <p>Actualmente disponible para prácticas profesionales o puestos Junior.</p>
-        <p style="font-size: 1.2rem; font-weight: bold;">Tel: 0983534700</p>
+        <h2>¿Listo para colaborar?</h2>
+        <p>Busco oportunidades para aplicar mis habilidades en desarrollo web.</p>
+        <p style="font-weight: bold; font-size: 1.2rem;">Tel: 0983534700</p>
         
         <div style="margin-top: 20px;">
-          <a href="https://github.com/Carolina803" target="_blank" class="btn btn-outline" style="border-color: #fff; color: #fff;">GitHub</a>
-          <a href="https://www.linkedin.com/" target="_blank" class="btn btn-outline" style="border-color: #fff; color: #fff; margin-left: 10px;">LinkedIn</a>
+          <a href="https://github.com/Carolina803" target="_blank" class="btn" style="border: 1px solid #fff; color: #fff;">GitHub</a>
+          <a href="https://www.linkedin.com/" target="_blank" class="btn" style="border: 1px solid #fff; color: #fff; margin-left: 10px;">LinkedIn</a>
         </div>
       </div>
     </section>
@@ -452,7 +318,6 @@
   <footer>
     <div class="container">
       <p>© <span id="year"></span> Deysi Carolina Velásquez Varela.</p>
-      <p style="font-size: 0.8rem; opacity: 0.7;">Diseño Profesional</p>
     </div>
   </footer>
 
