@@ -1,9 +1,156 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Mi Página en GitHub Pages</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio | Carolina803</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        /* ENCABEZADO */
+        header {
+            background: #1a1a1a;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        /* SECCIÓN DE PRESENTACIÓN */
+        .hero {
+            padding: 60px 20px;
+            text-align: center;
+            background: white;
+        }
+
+        .hero h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: auto;
+            color: #555;
+        }
+
+        /* SECCIÓN DE PROYECTOS */
+        .projects {
+            padding: 40px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .projects h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .card p {
+            color: #555;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            text-decoration: none;
+            background: #1a1a1a;
+            color: white;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        .card a:hover {
+            background: #444;
+        }
+
+        /* PIE DE PÁGINA */
+        footer {
+            background: #1a1a1a;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
-    <h1>¡Hola! Esta es mi página en GitHub Pages 🎉</h1>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <h1>Portafolio de Carolina803</h1>
+    </header>
+
+    <!-- PRESENTACIÓN -->
+    <section class="hero">
+        <h2>¡Bienvenidos!</h2>
+        <p>Este es mi portafolio profesional donde publico mis proyectos, trabajos y actividades desarrolladas.</p>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section class="projects">
+        <h2>Mis Proyectos</h2>
+
+        <div class="card-container">
+
+            <div class="card">
+                <h3>Proyecto 1</h3>
+                <p>Descripción breve del proyecto que realizaste o que quieres mostrar.</p>
+                <a href="#">Ver proyecto</a>
+            </div>
+
+            <div class="card">
+                <h3>Proyecto 2</h3>
+                <p>Incluye aquí información sobre otro proyecto importante o una práctica.</p>
+                <a href="#">Ver proyecto</a>
+            </div>
+
+            <div class="card">
+                <h3>Proyecto 3</h3>
+                <p>Agrega tantos proyectos como quieras, esta plantilla es totalmente flexible.</p>
+                <a href="#">Ver proyecto</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        © 2025 - Portafolio de Carolina803
+    </footer>
+
 </body>
 </html>
