@@ -1,335 +1,180 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Deysi Carolina Velásquez — Portafolio</title>
-
-  <!-- Tipografías -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
+  <meta name="description" content="Portafolio de Deysi Carolina Velásquez. Desarrolladora web — proyectos, contacto y breve presentación.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg: #f6efe6;        /* crema claro */
-      --white: #ffffff;
-      --muted: #6b6258;     /* texto secundario */
-      --text: #2d2a27;      /* texto principal */
-      --accent: #c08b5a;    /* color botones / acento */
-      --accent-dark: #a26f3f;
-      --card-border: #efe2d0;
-      --radius: 14px;
-      --maxw: 1100px;
+      --bg: #f6ede3; /* beige suave */
+      --panel: #ffffff;
+      --accent: #cfa87a; /* acento cálido */
+      --muted: #6b6b6b;
+      --text: #222;
+      --radius: 16px;
+      --shadow: 0 14px 30px rgba(30,30,30,0.06);
+      --container: 1200px;
     }
 
     *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      background:var(--bg);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
-    }
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
 
-    .wrap{max-width:var(--maxw);margin:28px auto;padding:28px;}
+    .wrap{max-width:var(--container);margin:0 auto;padding:36px 24px}
 
-    /* header */
-    header{
-      background:var(--white);
-      padding:34px;
-      border-radius:18px;
-      box-shadow: 0 10px 30px rgba(16,16,16,0.06);
-      border: 1px solid var(--card-border);
-      display:flex;
-      gap:18px;
-      align-items:center;
-      justify-content:space-between;
-    }
-    .brand{
-      display:flex;
-      gap:18px;
-      align-items:center;
-    }
-    .avatar{
-      width:92px;height:92px;border-radius:12px;object-fit:cover;border:3px solid #fff;box-shadow:0 6px 20px rgba(0,0,0,0.06)
-    }
-    .brand h1{
-      margin:0;font-family:"Playfair Display",serif;font-size:1.6rem;color:var(--text);
-    }
-    .brand p{margin:0;color:var(--muted);font-size:0.95rem}
+    /* Header */
+    header{background:transparent}
+    .top{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+    .logo{font-weight:700;font-size:1.05rem;letter-spacing:0.2px}
+    nav{display:flex;gap:18px}
+    nav a{font-weight:600;color:var(--muted);font-size:0.95rem}
 
-    nav{display:flex;gap:12px;align-items:center}
-    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
-    nav a.primary{background:linear-gradient(180deg,var(--accent),var(--accent-dark));color:#fff}
+    .hero{background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.35));border-radius:20px;padding:48px;text-align:center;box-shadow:var(--shadow);margin-top:12px}
+    .hero h1{font-size:2.6rem;margin:0;font-weight:800}
+    .hero .lead{color:var(--muted);margin-top:8px;font-weight:500}
+    .meta{color:var(--muted);margin-top:6px}
 
-    /* intro section */
-    .intro{
-      display:grid;
-      grid-template-columns:1fr 360px;
-      gap:28px;
-      margin-top:22px;
-      align-items:start;
-    }
-    .intro-left h2{
-      margin:0 0 12px;font-family:"Playfair Display",serif;font-size:2.1rem;color:var(--text)
-    }
-    .lead{color:var(--muted);margin:0 0 18px;font-size:1.05rem;max-width:720px}
-    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    /* Sobre mí */
+    .about{display:flex;gap:30px;align-items:center;margin-top:34px}
+    .about .card{flex:1;padding:28px;background:var(--panel);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .about .photo{min-width:160px;height:160px;border-radius:14px;background:linear-gradient(135deg, rgba(200,160,110,0.12), rgba(220,180,140,0.08));display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
+    .about h2{margin:0 0 10px;font-size:1.4rem}
+    .about p{margin:0;color:var(--muted);line-height:1.65}
 
-    .btn{
-      display:inline-block;padding:12px 16px;border-radius:12px;text-decoration:none;font-weight:700;
-      transition:transform .12s, box-shadow .12s;
-    }
-    .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:white;box-shadow:0 10px 30px rgba(162,111,63,0.18)}
-    .btn.light{background:transparent;border:1px solid #efe2d0;color:var(--muted)}
+    /* Grid de proyectos tipo mosaico */
+    .projects-wrap{margin-top:42px}
+    .projects-title{text-align:center;font-size:1.9rem;margin-bottom:20px;font-weight:700}
+    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 
-    .btn:hover{transform:translateY(-3px)}
+    .card-project{background:var(--panel);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .28s ease,box-shadow .28s ease}
+    .card-project:hover{transform:translateY(-8px);box-shadow:0 26px 50px rgba(30,30,30,0.08)}
 
-    /* profile card (right) */
-    .card{
-      background:var(--white);
-      border-radius:14px;
-      padding:18px;
-      border:1px solid var(--card-border);
-      box-shadow:0 10px 30px rgba(16,16,16,0.04)
-    }
-    .card h3{margin:8px 0 4px;font-size:1.05rem}
-    .muted{color:var(--muted);font-size:0.95rem}
+    .project-thumb{height:160px;background-size:cover;background-position:center}
+    .project-body{padding:18px}
+    .project-body h3{margin:0 0 8px;font-size:1.05rem}
+    .project-body p{margin:0 0 14px;color:var(--muted);font-size:0.95rem}
+    .project-footer{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-top:1px solid rgba(0,0,0,0.04)}
+    .tag{font-size:0.85rem;color:var(--muted);background:rgba(0,0,0,0.03);padding:6px 10px;border-radius:999px}
+    .btn{background:var(--accent);color:white;padding:8px 14px;border-radius:10px;font-weight:700}
 
-    /* projects */
-    .projects{margin-top:34px}
-    .projects h3{font-family:"Playfair Display",serif;font-size:1.6rem;margin:0 0 10px}
-    .projects p.small{color:var(--muted);margin:0 0 18px}
+    /* Contact */
+    .contact-card{margin-top:36px;background:var(--panel);padding:22px;border-radius:14px;box-shadow:var(--shadow);display:flex;justify-content:space-between;align-items:center}
+    .contact-left p{margin:0;color:var(--muted)}
 
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+    footer{margin-top:36px;text-align:center;color:var(--muted);font-size:0.95rem}
 
-    .proj{
-      background:var(--white);
-      padding:18px;border-radius:12px;border:1px solid var(--card-border);
-      box-shadow:0 8px 24px rgba(16,16,16,0.03);
-      transition:transform .14s,box-shadow .14s;
-    }
-    .proj:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(16,16,16,0.06)}
-    .proj h4{margin:0 0 8px;font-size:1.03rem}
-    .proj p{margin:0;color:var(--muted);font-size:0.95rem;min-height:44px}
-    .proj .meta{display:flex;justify-content:space-between;color:var(--muted);margin-top:12px;font-size:0.88rem}
-
-    .proj .actions{margin-top:14px;display:flex;gap:10px}
-    .link{display:inline-block;padding:10px 12px;border-radius:10px;text-decoration:none;font-weight:700;background:var(--accent);color:#fff}
-    .link.ghost{background:transparent;border:1px solid #efe2d0;color:var(--accent-dark)}
-
-    /* contact */
-    .contact{
-      margin-top:36px;background:linear-gradient(180deg, #fff, #fff);padding:18px;border-radius:12px;border:1px solid var(--card-border);display:flex;justify-content:space-between;align-items:center;
-    }
-    .contact .left p{margin:0;color:var(--muted)}
-    .contact .right a{margin-left:12px;text-decoration:none;color:var(--accent-dark);font-weight:700}
-
-    footer{margin-top:26px;text-align:center;color:var(--muted);font-size:0.95rem;padding-bottom:30px}
-
-    /* responsive */
-    @media (max-width:980px){
-      .intro{grid-template-columns:1fr}
-      header{flex-direction:column;align-items:flex-start;gap:12px}
-      nav{width:100%;justify-content:flex-start}
-      .contact{flex-direction:column;align-items:flex-start;gap:12px}
-    }
+    /* Responsive */
+    @media (max-width:1000px){.projects{grid-template-columns:repeat(2,1fr)}.about{flex-direction:column}.about .photo{width:100%;height:200px}}
+    @media (max-width:640px){.projects{grid-template-columns:1fr}.hero h1{font-size:1.6rem}.hero{padding:26px}}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <!-- HEADER -->
-    <header>
-      <div style="display:flex;gap:18px;align-items:center">
-        <img class="avatar" src="https://via.placeholder.com/240x240.png?text=Foto+Tuya" alt="Foto Deysi Carolina">
-        <div>
-          <h1>Deysi Carolina Velásquez Varela</h1>
-          <p class="muted">Desarrolladora Web · Estudiante · 21 años</p>
-        </div>
+  <header>
+    <div class="wrap">
+      <div class="top">
+        <div class="logo">Deysi Velásquez</div>
+        <nav aria-label="Navegación principal">
+          <a href="#proyectos">Proyectos</a>
+          <a href="#sobre-mi">Sobre mí</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
       </div>
 
-      <nav>
-        <a class="btn light" href="#proyectos">Proyectos</a>
-        <a class="btn primary" href="#contacto">Contacto</a>
-      </nav>
-    </header>
+      <section class="hero">
+        <h1>Deysi Carolina Velásquez Varela</h1>
+        <div class="lead">Desarrolladora web — Front‑end y maquetación</div>
+        <div class="meta">21 años • +593 983 534 700 • carolina@example.com</div>
+      </section>
+    </div>
+  </header>
 
-    <!-- INTRO -->
-    <section class="intro" aria-label="Introducción">
-      <div class="intro-left">
-        <h2>Hola — soy Deysi Carolina</h2>
-        <p class="lead">Desarrolladora web con experiencia en <strong>Python & Django</strong>, creación de interfaces limpias y despliegue en la nube (PythonAnywhere). Este portafolio muestra proyectos reales publicados en GitLab y demos en línea pensadas para empleadores.</p>
-
-        <div class="cta">
-          <a class="btn primary" href="https://deysi.pythonanywhere.com/jardineros/" target="_blank">Abrir demo activo</a>
-          <a class="btn light" href="https://github.com/Carolina803/proyectos" target="_blank">Ver código general</a>
-        </div>
+  <main class="wrap" role="main">
+    <section id="sobre-mi" class="about">
+      <div class="photo">Tu foto</div>
+      <div class="card">
+        <h2>Sobre mí</h2>
+        <p>Soy Deysi, me dedico a crear páginas y pequeñas aplicaciones con enfoque en simplicidad, usabilidad y mantenimiento. Trabajo principalmente con HTML y CSS, y para proyectos con base de datos utilizo gestores ligeros. Este sitio es un index.html pensado para presentar mis trabajos de forma rápida y profesional, sin dependencias externas.</p>
+        <p style="margin-top:10px">Me interesa entregar resultados que funcionen en distintas pantallas, con buena accesibilidad básica y código ordenado. Me adapto a equipos pequeños y a proyectos donde se valora la claridad y la rapidez.</p>
       </div>
-
-      <aside class="card" aria-label="Perfil">
-        <h3>Deysi Carolina Velásquez Varela</h3>
-        <p class="muted">21 años · Estudiante · Desarrolladora Web</p>
-        <p style="margin-top:12px"><strong>Tel:</strong> 0983534700</p>
-        <p class="muted" style="margin-top:8px">GitHub · LinkedIn</p>
-        <div style="margin-top:12px;display:flex;gap:10px">
-          <a class="btn light" href="https://github.com/Carolina803" target="_blank">GitHub</a>
-          <a class="btn light" href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
-        </div>
-      </aside>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="proyectos" class="projects" aria-label="Proyectos">
-      <h3>Proyectos Relevantes</h3>
-      <p class="small">Lista con repositorios en GitLab y demos cuando aplican. Haz clic en "Ver proyecto" para demos o en "Ver código" para el repositorio.</p>
+    <section id="proyectos" class="projects-wrap">
+      <div class="projects-title">Proyectos destacados</div>
+      <div class="projects" role="list">
 
-      <div class="grid">
-        <!-- 1 -->
-        <article class="proj">
-          <h4>Center Adoption</h4>
-          <p>Repositorio colaborativo — ejercicios y trabajo en equipo.</p>
-          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
-          <div class="actions">
-            <a class="link" href="https://gitlab.com/mbue-j2d-group/center_adoption" target="_blank">Ver código</a>
+        <article class="card-project" role="listitem">
+          <div class="project-thumb" style="background-image:url('https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=1200&q=80')" aria-hidden="true"></div>
+          <div class="project-body">
+            <h3>Center Adoption</h3>
+            <p>Pequeña aplicación para gestionar adopciones: fichas de animales y formulario para interesados.</p>
+          </div>
+          <div class="project-footer">
+            <div class="tag">Gestión</div>
+            <a class="btn" href="#">Ver código</a>
           </div>
         </article>
 
-        <!-- 2 -->
-        <article class="proj">
-          <h4>Cuidado_Plantas</h4>
-          <p>Prácticas y ejercicios sobre cuidado de plantas. (Repositorio personal).</p>
-          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
-          <div class="actions">
-            <a class="link" href="https://gitlab.com/CarolinaVelasquez/cuidado_plantas" target="_blank">Ver código</a>
+        <article class="card-project" role="listitem">
+          <div class="project-thumb" style="background-image:url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80')" aria-hidden="true"></div>
+          <div class="project-body">
+            <h3>Cuidado Plantas</h3>
+            <p>Web con recordatorios y pequeñas guías de cuidado por especie, pensada para UX simple.</p>
+          </div>
+          <div class="project-footer">
+            <div class="tag">UX / Front</div>
+            <a class="btn" href="#">Ver proyecto</a>
           </div>
         </article>
 
-        <!-- 3 -->
-        <article class="proj">
-          <h4>Ejercicio9</h4>
-          <p>Trabajo colaborativo en repositorio gus_05-group.</p>
-          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
-          <div class="actions">
-            <a class="link" href="https://gitlab.com/gus_05-group/ejercicio9" target="_blank">Ver código</a>
+        <article class="card-project" role="listitem">
+          <div class="project-thumb" style="background-image:url('https://images.unsplash.com/photo-1508873696983-2dfd5898f08b?auto=format&fit=crop&w=1200&q=80')" aria-hidden="true"></div>
+          <div class="project-body">
+            <h3>Ejercicio 9 (Colaborativo)</h3>
+            <p>Trabajo en equipo para practicar control de versiones, revisión de código y despliegue.</p>
           </div>
-        </article>
-
-        <!-- 4 -->
-        <article class="proj">
-          <h4>Evaluacion2CV</h4>
-          <p>Repositorio con evaluación académica.</p>
-          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
-          <div class="actions">
-            <a class="link" href="https://gitlab.com/CarolinaVelasquez/evaluacion2cv" target="_blank">Ver código</a>
-          </div>
-        </article>
-
-        <!-- 5 -->
-        <article class="proj">
-          <h4>Geo2_CV</h4>
-          <p>Proyecto geo/espacial — práctica personal.</p>
-          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
-          <div class="actions">
-            <a class="link" href="https://gitlab.com/CarolinaVelasquez/geo2_cv" target="_blank">Ver código</a>
-          </div>
-        </article>
-
-        <!-- 6 -->
-        <article class="proj">
-          <h4>GestionPuestos</h4>
-          <p>Proyecto de gestión (MBUE). Enfoque colaborativo.</p>
-          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
-          <div class="actions">
-            <a class="link" href="https://gitlab.com/mbue-j2d-group/gestionpuestos" target="_blank">Ver código</a>
-          </div>
-        </article>
-
-        <!-- 7 -->
-        <article class="proj">
-          <h4>MuralesUrbanos</h4>
-          <p>Proyecto personal sobre murales urbanos.</p>
-          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
-          <div class="actions">
-            <a class="link" href="https://gitlab.com/CarolinaVelasquez/muralesurbanos" target="_blank">Ver código</a>
-          </div>
-        </article>
-
-        <!-- 8 -->
-        <article class="proj">
-          <h4>Puntos_Turisticos (MBUE)</h4>
-          <p>Repositorio grupal de puntos turísticos.</p>
-          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
-          <div class="actions">
-            <a class="link" href="https://gitlab.com/mbue-j2d-group/puntos_turisticos" target="_blank">Ver código</a>
-          </div>
-        </article>
-
-        <!-- 9 -->
-        <article class="proj">
-          <h4>Puntos_Turisticos (Carolina)</h4>
-          <p>Versión personal del proyecto de puntos turísticos.</p>
-          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
-          <div class="actions">
-            <a class="link" href="https://gitlab.com/CarolinaVelasquez/puntos_turisticos" target="_blank">Ver código</a>
-          </div>
-        </article>
-
-        <!-- 10 -->
-        <article class="proj">
-          <h4>TourismC2</h4>
-          <p>Ejercicios y prácticas del área de turismo.</p>
-          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
-          <div class="actions">
-            <a class="link" href="https://gitlab.com/CarolinaVelasquez/tourismc2" target="_blank">Ver código</a>
-          </div>
-        </article>
-
-        <!-- 11 -->
-        <article class="proj">
-          <h4>ZonaSegura</h4>
-          <p>Proyecto MBUE orientado a seguridad en zonas.</p>
-          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
-          <div class="actions">
-            <a class="link" href="https://gitlab.com/mbue-j2d-group/zonasegura" target="_blank">Ver código</a>
-          </div>
-        </article>
-
-        <!-- 12: demo -->
-        <article class="proj">
-          <h4>Gestión de Jardineros (Demo)</h4>
-          <p>Aplicación Django desplegada en PythonAnywhere — demo online.</p>
-          <div class="meta"><span>Fecha: —</span><span>Demo</span></div>
-          <div class="actions">
-            <a class="link" href="https://deysi.pythonanywhere.com/jardineros/" target="_blank">Ver proyecto</a>
-            <a class="link ghost" href="https://github.com/Carolina803/proyectos" target="_blank">Ver código</a>
+          <div class="project-footer">
+            <div class="tag">Colaboración</div>
+            <a class="btn" href="#">Ver código</a>
           </div>
         </article>
 
       </div>
-
-      <p class="muted" style="margin-top:16px">Nota: si quieres que complete las fechas y agregue mini-screenshots reales (extraídas del README o del sitio), dime "completa fechas y screenshots" y lo hago.</p>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contacto" class="contact" aria-label="Contacto">
-      <div class="left">
-        <h3 style="margin:0">Contacto</h3>
-        <p class="muted" style="margin-top:8px">Interesado en contratar o proponer prácticas: <strong>0983534700</strong> — Email: <strong>tu-email@ejemplo.com</strong></p>
-      </div>
-      <div class="right">
-        <a href="https://github.com/Carolina803" target="_blank" class="muted">GitHub</a>
-        <a href="https://www.linkedin.com/" target="_blank" class="muted">LinkedIn</a>
+    <section id="contacto" style="margin-top:34px">
+      <div class="contact-card">
+        <div class="contact-left">
+          <strong>¿Hablamos?</strong>
+          <p style="margin-top:6px">Si tienes un proyecto pequeño o necesitas una página sencilla, escríbeme. Respondo rápido y me adapto a necesidades prácticas.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-end">
+          <a class="btn" href="mailto:carolina@example.com">Enviar email</a>
+          <a class="tag" href="#">Descargar CV</a>
+        </div>
       </div>
     </section>
 
     <footer>
-      © <span id="y"></span> Deysi Carolina Velásquez Varela — Portafolio Profesional
+      © 2025 Deysi Carolina Velásquez Varela — Desarrollo web y diseño funcional
     </footer>
-  </div>
+  </main>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    // smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const href = a.getAttribute('href');
+        if(href.length>1){
+          e.preventDefault();
+          const el = document.querySelector(href);
+          if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      })
+    });
   </script>
 </body>
 </html>
