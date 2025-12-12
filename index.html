@@ -1,261 +1,335 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portafolio — Deysi Carolina Velásquez</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Deysi Carolina Velásquez — Portafolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-<style>
-    body {
-        margin: 0;
-        font-family: "Inter", sans-serif;
-        background: #f5eadd;
-        color: #2c2c2c;
+  <style>
+    :root{
+      --bg: #f6efe6;        /* crema claro */
+      --white: #ffffff;
+      --muted: #6b6258;     /* texto secundario */
+      --text: #2d2a27;      /* texto principal */
+      --accent: #c08b5a;    /* color botones / acento */
+      --accent-dark: #a26f3f;
+      --card-border: #efe2d0;
+      --radius: 14px;
+      --maxw: 1100px;
     }
 
-    header {
-        background: #ffffff;
-        padding: 40px 20px;
-        text-align: center;
-        border-bottom: 4px solid #e2d2c3;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
     }
 
-    header h1 {
-        font-size: 2.5rem;
-        margin: 0;
-        font-weight: 700;
-    }
+    .wrap{max-width:var(--maxw);margin:28px auto;padding:28px;}
 
-    header p {
-        margin: 6px 0 0;
-        font-size: 1.1rem;
-        color: #6a5f58;
+    /* header */
+    header{
+      background:var(--white);
+      padding:34px;
+      border-radius:18px;
+      box-shadow: 0 10px 30px rgba(16,16,16,0.06);
+      border: 1px solid var(--card-border);
+      display:flex;
+      gap:18px;
+      align-items:center;
+      justify-content:space-between;
     }
+    .brand{
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+    .avatar{
+      width:92px;height:92px;border-radius:12px;object-fit:cover;border:3px solid #fff;box-shadow:0 6px 20px rgba(0,0,0,0.06)
+    }
+    .brand h1{
+      margin:0;font-family:"Playfair Display",serif;font-size:1.6rem;color:var(--text);
+    }
+    .brand p{margin:0;color:var(--muted);font-size:0.95rem}
 
-    .info-box {
-        max-width: 900px;
-        margin: 40px auto;
-        padding: 30px;
-        background: #fff;
-        border-radius: 15px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        border-left: 6px solid #d8b694;
-    }
+    nav{display:flex;gap:12px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
+    nav a.primary{background:linear-gradient(180deg,var(--accent),var(--accent-dark));color:#fff}
 
-    .info-box h2 {
-        margin-top: 0;
-        font-size: 1.8rem;
-        font-weight: 700;
+    /* intro section */
+    .intro{
+      display:grid;
+      grid-template-columns:1fr 360px;
+      gap:28px;
+      margin-top:22px;
+      align-items:start;
     }
+    .intro-left h2{
+      margin:0 0 12px;font-family:"Playfair Display",serif;font-size:2.1rem;color:var(--text)
+    }
+    .lead{color:var(--muted);margin:0 0 18px;font-size:1.05rem;max-width:720px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
 
-    .info-box p {
-        margin: 10px 0;
-        line-height: 1.6;
+    .btn{
+      display:inline-block;padding:12px 16px;border-radius:12px;text-decoration:none;font-weight:700;
+      transition:transform .12s, box-shadow .12s;
     }
+    .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:white;box-shadow:0 10px 30px rgba(162,111,63,0.18)}
+    .btn.light{background:transparent;border:1px solid #efe2d0;color:var(--muted)}
 
-    /* PROYECTOS */
-    .projects {
-        max-width: 1100px;
-        margin: 40px auto 80px;
-        padding: 0 20px;
-    }
+    .btn:hover{transform:translateY(-3px)}
 
-    .projects h2 {
-        text-align: center;
-        font-size: 2rem;
-        margin-bottom: 25px;
-        font-weight: 700;
+    /* profile card (right) */
+    .card{
+      background:var(--white);
+      border-radius:14px;
+      padding:18px;
+      border:1px solid var(--card-border);
+      box-shadow:0 10px 30px rgba(16,16,16,0.04)
     }
+    .card h3{margin:8px 0 4px;font-size:1.05rem}
+    .muted{color:var(--muted);font-size:0.95rem}
 
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 22px;
-    }
+    /* projects */
+    .projects{margin-top:34px}
+    .projects h3{font-family:"Playfair Display",serif;font-size:1.6rem;margin:0 0 10px}
+    .projects p.small{color:var(--muted);margin:0 0 18px}
 
-    .card {
-        background: #fff;
-        padding: 20px;
-        border-radius: 18px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.10);
-        border: 2px solid #e8d9c8;
-        transition: 0.2s;
-    }
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
 
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    .proj{
+      background:var(--white);
+      padding:18px;border-radius:12px;border:1px solid var(--card-border);
+      box-shadow:0 8px 24px rgba(16,16,16,0.03);
+      transition:transform .14s,box-shadow .14s;
     }
+    .proj:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(16,16,16,0.06)}
+    .proj h4{margin:0 0 8px;font-size:1.03rem}
+    .proj p{margin:0;color:var(--muted);font-size:0.95rem;min-height:44px}
+    .proj .meta{display:flex;justify-content:space-between;color:var(--muted);margin-top:12px;font-size:0.88rem}
 
-    .card h3 {
-        margin-top: 0;
-        font-size: 1.3rem;
-        font-weight: 700;
-    }
+    .proj .actions{margin-top:14px;display:flex;gap:10px}
+    .link{display:inline-block;padding:10px 12px;border-radius:10px;text-decoration:none;font-weight:700;background:var(--accent);color:#fff}
+    .link.ghost{background:transparent;border:1px solid #efe2d0;color:var(--accent-dark)}
 
-    .buttons {
-        margin-top: 15px;
-        display: flex;
-        gap: 10px;
+    /* contact */
+    .contact{
+      margin-top:36px;background:linear-gradient(180deg, #fff, #fff);padding:18px;border-radius:12px;border:1px solid var(--card-border);display:flex;justify-content:space-between;align-items:center;
     }
+    .contact .left p{margin:0;color:var(--muted)}
+    .contact .right a{margin-left:12px;text-decoration:none;color:var(--accent-dark);font-weight:700}
 
-    .btn {
-        flex: 1;
-        text-align: center;
-        padding: 10px;
-        background: #d1b08a;
-        color: white;
-        text-decoration: none;
-        border-radius: 10px;
-        font-weight: 600;
-        transition: 0.2s;
-    }
+    footer{margin-top:26px;text-align:center;color:var(--muted);font-size:0.95rem;padding-bottom:30px}
 
-    .btn:hover {
-        background: #b8936a;
+    /* responsive */
+    @media (max-width:980px){
+      .intro{grid-template-columns:1fr}
+      header{flex-direction:column;align-items:flex-start;gap:12px}
+      nav{width:100%;justify-content:flex-start}
+      .contact{flex-direction:column;align-items:flex-start;gap:12px}
     }
-
-    footer {
-        text-align: center;
-        padding: 20px;
-        background: #fff;
-        border-top: 3px solid #e2d0c0;
-        color: #6a5f58;
-        font-size: 0.95rem;
-        margin-top: 50px;
-    }
-</style>
+  </style>
 </head>
 <body>
-
-<header>
-    <h1>Deysi Carolina Velásquez Varela</h1>
-    <p>Desarrolladora Web · Estudiante · 21 años · Tel: 0983534700</p>
-</header>
-
-<section class="info-box">
-    <h2>Sobre mí</h2>
-    <p>
-        Soy **Deysi Carolina Velásquez Varela**, una joven desarrolladora de 21 años apasionada
-        por el desarrollo web con **Python, Django, HTML y CSS**.
-    </p>
-    <p>
-        Me gusta crear aplicaciones funcionales, organizadas y fáciles de usar.  
-        Este portafolio reúne mis proyectos reales publicados en **GitLab y PythonAnywhere**, 
-        ideales para presentar a empresas y oportunidades laborales.
-    </p>
-</section>
-
-<section class="projects">
-    <h2>Mis Proyectos</h2>
-
-    <div class="grid">
-
-        <!-- 1 -->
-        <div class="card">
-            <h3>Center Adoption</h3>
-            <div class="buttons">
-                <a class="btn" href="https://gitlab.com/mbue-j2d-group/center_adoption" target="_blank">Ver código</a>
-            </div>
+  <div class="wrap">
+    <!-- HEADER -->
+    <header>
+      <div style="display:flex;gap:18px;align-items:center">
+        <img class="avatar" src="https://via.placeholder.com/240x240.png?text=Foto+Tuya" alt="Foto Deysi Carolina">
+        <div>
+          <h1>Deysi Carolina Velásquez Varela</h1>
+          <p class="muted">Desarrolladora Web · Estudiante · 21 años</p>
         </div>
+      </div>
+
+      <nav>
+        <a class="btn light" href="#proyectos">Proyectos</a>
+        <a class="btn primary" href="#contacto">Contacto</a>
+      </nav>
+    </header>
+
+    <!-- INTRO -->
+    <section class="intro" aria-label="Introducción">
+      <div class="intro-left">
+        <h2>Hola — soy Deysi Carolina</h2>
+        <p class="lead">Desarrolladora web con experiencia en <strong>Python & Django</strong>, creación de interfaces limpias y despliegue en la nube (PythonAnywhere). Este portafolio muestra proyectos reales publicados en GitLab y demos en línea pensadas para empleadores.</p>
+
+        <div class="cta">
+          <a class="btn primary" href="https://deysi.pythonanywhere.com/jardineros/" target="_blank">Abrir demo activo</a>
+          <a class="btn light" href="https://github.com/Carolina803/proyectos" target="_blank">Ver código general</a>
+        </div>
+      </div>
+
+      <aside class="card" aria-label="Perfil">
+        <h3>Deysi Carolina Velásquez Varela</h3>
+        <p class="muted">21 años · Estudiante · Desarrolladora Web</p>
+        <p style="margin-top:12px"><strong>Tel:</strong> 0983534700</p>
+        <p class="muted" style="margin-top:8px">GitHub · LinkedIn</p>
+        <div style="margin-top:12px;display:flex;gap:10px">
+          <a class="btn light" href="https://github.com/Carolina803" target="_blank">GitHub</a>
+          <a class="btn light" href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+        </div>
+      </aside>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="proyectos" class="projects" aria-label="Proyectos">
+      <h3>Proyectos Relevantes</h3>
+      <p class="small">Lista con repositorios en GitLab y demos cuando aplican. Haz clic en "Ver proyecto" para demos o en "Ver código" para el repositorio.</p>
+
+      <div class="grid">
+        <!-- 1 -->
+        <article class="proj">
+          <h4>Center Adoption</h4>
+          <p>Repositorio colaborativo — ejercicios y trabajo en equipo.</p>
+          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
+          <div class="actions">
+            <a class="link" href="https://gitlab.com/mbue-j2d-group/center_adoption" target="_blank">Ver código</a>
+          </div>
+        </article>
 
         <!-- 2 -->
-        <div class="card">
-            <h3>Cuidado Plantas</h3>
-            <div class="buttons">
-                <a class="btn" href="https://gitlab.com/CarolinaVelasquez/cuidado_plantas" target="_blank">Ver código</a>
-            </div>
-        </div>
+        <article class="proj">
+          <h4>Cuidado_Plantas</h4>
+          <p>Prácticas y ejercicios sobre cuidado de plantas. (Repositorio personal).</p>
+          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
+          <div class="actions">
+            <a class="link" href="https://gitlab.com/CarolinaVelasquez/cuidado_plantas" target="_blank">Ver código</a>
+          </div>
+        </article>
 
         <!-- 3 -->
-        <div class="card">
-            <h3>Ejercicio 9 (colaborativo)</h3>
-            <div class="buttons">
-                <a class="btn" href="https://gitlab.com/gus_05-group/ejercicio9" target="_blank">Ver código</a>
-            </div>
-        </div>
+        <article class="proj">
+          <h4>Ejercicio9</h4>
+          <p>Trabajo colaborativo en repositorio gus_05-group.</p>
+          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
+          <div class="actions">
+            <a class="link" href="https://gitlab.com/gus_05-group/ejercicio9" target="_blank">Ver código</a>
+          </div>
+        </article>
 
         <!-- 4 -->
-        <div class="card">
-            <h3>Evaluación 2CV</h3>
-            <div class="buttons">
-                <a class="btn" href="https://gitlab.com/CarolinaVelasquez/evaluacion2cv" target="_blank">Ver código</a>
-            </div>
-        </div>
+        <article class="proj">
+          <h4>Evaluacion2CV</h4>
+          <p>Repositorio con evaluación académica.</p>
+          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
+          <div class="actions">
+            <a class="link" href="https://gitlab.com/CarolinaVelasquez/evaluacion2cv" target="_blank">Ver código</a>
+          </div>
+        </article>
 
         <!-- 5 -->
-        <div class="card">
-            <h3>Geo2_CV</h3>
-            <div class="buttons">
-                <a class="btn" href="https://gitlab.com/CarolinaVelasquez/geo2_cv" target="_blank">Ver código</a>
-            </div>
-        </div>
+        <article class="proj">
+          <h4>Geo2_CV</h4>
+          <p>Proyecto geo/espacial — práctica personal.</p>
+          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
+          <div class="actions">
+            <a class="link" href="https://gitlab.com/CarolinaVelasquez/geo2_cv" target="_blank">Ver código</a>
+          </div>
+        </article>
 
         <!-- 6 -->
-        <div class="card">
-            <h3>Gestión Puestos</h3>
-            <div class="buttons">
-                <a class="btn" href="https://gitlab.com/mbue-j2d-group/gestionpuestos" target="_blank">Ver código</a>
-            </div>
-        </div>
+        <article class="proj">
+          <h4>GestionPuestos</h4>
+          <p>Proyecto de gestión (MBUE). Enfoque colaborativo.</p>
+          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
+          <div class="actions">
+            <a class="link" href="https://gitlab.com/mbue-j2d-group/gestionpuestos" target="_blank">Ver código</a>
+          </div>
+        </article>
 
         <!-- 7 -->
-        <div class="card">
-            <h3>Murales Urbanos</h3>
-            <div class="buttons">
-                <a class="btn" href="https://gitlab.com/CarolinaVelasquez/muralesurbanos" target="_blank">Ver código</a>
-            </div>
-        </div>
+        <article class="proj">
+          <h4>MuralesUrbanos</h4>
+          <p>Proyecto personal sobre murales urbanos.</p>
+          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
+          <div class="actions">
+            <a class="link" href="https://gitlab.com/CarolinaVelasquez/muralesurbanos" target="_blank">Ver código</a>
+          </div>
+        </article>
 
         <!-- 8 -->
-        <div class="card">
-            <h3>Puntos Turísticos (MBUE)</h3>
-            <div class="buttons">
-                <a class="btn" href="https://gitlab.com/mbue-j2d-group/puntos_turisticos" target="_blank">Ver código</a>
-            </div>
-        </div>
+        <article class="proj">
+          <h4>Puntos_Turisticos (MBUE)</h4>
+          <p>Repositorio grupal de puntos turísticos.</p>
+          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
+          <div class="actions">
+            <a class="link" href="https://gitlab.com/mbue-j2d-group/puntos_turisticos" target="_blank">Ver código</a>
+          </div>
+        </article>
 
         <!-- 9 -->
-        <div class="card">
-            <h3>Puntos Turísticos (Carolina)</h3>
-            <div class="buttons">
-                <a class="btn" href="https://gitlab.com/CarolinaVelasquez/puntos_turisticos" target="_blank">Ver código</a>
-            </div>
-        </div>
+        <article class="proj">
+          <h4>Puntos_Turisticos (Carolina)</h4>
+          <p>Versión personal del proyecto de puntos turísticos.</p>
+          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
+          <div class="actions">
+            <a class="link" href="https://gitlab.com/CarolinaVelasquez/puntos_turisticos" target="_blank">Ver código</a>
+          </div>
+        </article>
 
         <!-- 10 -->
-        <div class="card">
-            <h3>Tourism C2</h3>
-            <div class="buttons">
-                <a class="btn" href="https://gitlab.com/CarolinaVelasquez/tourismc2" target="_blank">Ver código</a>
-            </div>
-        </div>
+        <article class="proj">
+          <h4>TourismC2</h4>
+          <p>Ejercicios y prácticas del área de turismo.</p>
+          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
+          <div class="actions">
+            <a class="link" href="https://gitlab.com/CarolinaVelasquez/tourismc2" target="_blank">Ver código</a>
+          </div>
+        </article>
 
         <!-- 11 -->
-        <div class="card">
-            <h3>Zona Segura</h3>
-            <div class="buttons">
-                <a class="btn" href="https://gitlab.com/mbue-j2d-group/zonasegura" target="_blank">Ver código</a>
-            </div>
-        </div>
+        <article class="proj">
+          <h4>ZonaSegura</h4>
+          <p>Proyecto MBUE orientado a seguridad en zonas.</p>
+          <div class="meta"><span>Fecha: —</span><span>GitLab</span></div>
+          <div class="actions">
+            <a class="link" href="https://gitlab.com/mbue-j2d-group/zonasegura" target="_blank">Ver código</a>
+          </div>
+        </article>
 
-        <!-- TU PROYECTO DJANGO CON DEMO -->
-        <div class="card">
-            <h3>Gestión de Jardineros (Django)</h3>
-            <div class="buttons">
-                <a class="btn" href="https://deysi.pythonanywhere.com/jardineros/" target="_blank">Ver proyecto</a>
-                <a class="btn" href="https://github.com/Carolina803/proyectos" target="_blank">Ver código</a>
-            </div>
-        </div>
+        <!-- 12: demo -->
+        <article class="proj">
+          <h4>Gestión de Jardineros (Demo)</h4>
+          <p>Aplicación Django desplegada en PythonAnywhere — demo online.</p>
+          <div class="meta"><span>Fecha: —</span><span>Demo</span></div>
+          <div class="actions">
+            <a class="link" href="https://deysi.pythonanywhere.com/jardineros/" target="_blank">Ver proyecto</a>
+            <a class="link ghost" href="https://github.com/Carolina803/proyectos" target="_blank">Ver código</a>
+          </div>
+        </article>
 
-    </div>
-</section>
+      </div>
 
-<footer>
-    © 2025 Deysi Carolina Velásquez Varela — Portafolio Profesional
-</footer>
+      <p class="muted" style="margin-top:16px">Nota: si quieres que complete las fechas y agregue mini-screenshots reales (extraídas del README o del sitio), dime "completa fechas y screenshots" y lo hago.</p>
+    </section>
 
+    <!-- CONTACT -->
+    <section id="contacto" class="contact" aria-label="Contacto">
+      <div class="left">
+        <h3 style="margin:0">Contacto</h3>
+        <p class="muted" style="margin-top:8px">Interesado en contratar o proponer prácticas: <strong>0983534700</strong> — Email: <strong>tu-email@ejemplo.com</strong></p>
+      </div>
+      <div class="right">
+        <a href="https://github.com/Carolina803" target="_blank" class="muted">GitHub</a>
+        <a href="https://www.linkedin.com/" target="_blank" class="muted">LinkedIn</a>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> Deysi Carolina Velásquez Varela — Portafolio Profesional
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
