@@ -3,391 +3,461 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Deysi Velásquez — Portafolio Profesional</title>
+  <title>Deysi Carolina Velásquez — Portfolio</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
-      /* Paleta de Colores "Editorial Moderno" */
-      --bg-color: #fdfcf8;       /* Blanco hueso (más cálido) */
-      --card-bg: #ffffff;
-      --primary-text: #2c2c2c;   /* Gris casi negro */
-      --muted-text: #666666;
-      --accent-color: #b08d55;   /* Dorado/Ocre elegante */
+      /* Paleta Original "Editorial" */
+      --bg: #fcfbf9;
+      --white: #ffffff;
+      --text-main: #2c2c2c;
+      --text-muted: #666666;
+      --accent: #b08d55;
       --accent-hover: #8f703e;
-      --border-color: #eee4da;
-      --shadow: 0 10px 30px rgba(0,0,0,0.04);
+      --linkedin: #0077b5; /* Color LinkedIn */
+      --border-light: #eaeaea;
+      --shadow-sm: 0 4px 6px rgba(0,0,0,0.02);
+      --shadow-md: 0 12px 24px rgba(0,0,0,0.06);
+      --radius: 8px;
     }
 
+    /* Reset básico */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
+    
     body {
       font-family: 'Lato', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--primary-text);
-      line-height: 1.6;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.7;
+      font-size: 16px;
     }
 
-    /* Títulos */
-    h1, h2, h3 {
+    h1, h2, h3, h4 {
       font-family: 'Playfair Display', serif;
+      color: var(--text-main);
+      margin-bottom: 1rem;
       font-weight: 700;
-      color: var(--primary-text);
     }
 
-    /* Contenedor Principal */
+    a { text-decoration: none; transition: 0.3s ease; color: inherit; }
+    
     .container {
       max-width: 1100px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    /* --- NAVEGACIÓN --- */
-    nav {
-      padding: 24px 0;
+    /* --- HEADER / NAV --- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(252, 251, 249, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-light);
+      padding: 20px 0;
+    }
+    .nav-flex {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 40px;
     }
     .brand {
+      font-family: 'Playfair Display', serif;
       font-size: 1.5rem;
       font-weight: 700;
-      font-family: 'Playfair Display', serif;
     }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--muted-text);
-      margin-left: 24px;
-      font-size: 0.95rem;
-      transition: color 0.3s;
+    nav ul { display: flex; list-style: none; gap: 30px; }
+    nav a {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      font-weight: 700;
     }
-    .nav-links a:hover { color: var(--accent-color); }
+    nav a:hover, nav a.active { color: var(--accent); }
 
-    /* --- HERO (BIENVENIDA) --- */
+    /* --- HERO SECTION --- */
     .hero {
+      padding: 120px 0 100px;
       text-align: center;
-      padding: 80px 20px 100px;
-      background: radial-gradient(circle at center, #fffcf5 0%, #fdfcf8 100%);
-      border-bottom: 1px solid var(--border-color);
+      max-width: 800px;
+      margin: 0 auto;
     }
+    /* Foto eliminada según petición "borra mi boto/foto" */
     
-    .avatar {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #fff;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    .hero h4 {
+      font-size: 1.2rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: 3.8rem;
+      line-height: 1.1;
       margin-bottom: 24px;
     }
-
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 16px;
-      line-height: 1.1;
-    }
-    
     .hero p {
       font-size: 1.25rem;
-      color: var(--muted-text);
-      max-width: 700px;
-      margin: 0 auto 32px;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      font-weight: 300;
+      padding: 0 20px;
     }
-
-    /* BOTONES */
-    .btn-group {
+    .hero-buttons {
       display: flex;
       gap: 16px;
       justify-content: center;
+      flex-wrap: wrap;
     }
+
+    /* Botones */
     .btn {
+      padding: 14px 28px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 12px 28px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: all 0.2s;
     }
     .btn-primary {
-      background-color: var(--primary-text);
+      background-color: var(--accent);
       color: #fff;
+      box-shadow: 0 4px 15px rgba(176, 141, 85, 0.3);
     }
+    .btn-primary:hover { background-color: var(--accent-hover); transform: translateY(-2px); }
+    
     .btn-linkedin {
-      background-color: #0077b5; /* Color oficial LinkedIn */
+      background-color: var(--linkedin);
       color: #fff;
+      box-shadow: 0 4px 15px rgba(0, 119, 181, 0.2);
     }
+    .btn-linkedin:hover { background-color: #005e93; transform: translateY(-2px); }
+
     .btn-outline {
       background: transparent;
-      border: 1px solid var(--border-color);
-      color: var(--muted-text);
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+    }
+    .btn-outline:hover { border-color: var(--text-main); color: var(--text-main); }
+
+    /* --- NUEVA SECCIÓN: SOBRE MÍ & SKILLS --- */
+    .about-container {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      padding: 40px;
+      margin-bottom: 80px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 50px;
+      align-items: start;
+      box-shadow: var(--shadow-sm);
     }
     
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    .about-info h3 { font-size: 1.8rem; margin-bottom: 20px; }
+    .about-info p { color: var(--text-muted); margin-bottom: 20px; font-size: 1rem; }
+    
+    .education-box {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-light);
     }
-
-    /* --- SOBRE MÍ & SKILLS (NUEVO) --- */
-    .about-section {
-      padding: 80px 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: start;
-    }
-    .about-text h2 { font-size: 2.2rem; margin-bottom: 20px; }
-    .about-text p { color: var(--muted-text); margin-bottom: 16px; }
+    .education-box strong { display: block; color: var(--text-main); font-size: 1.1rem; }
 
     /* Barras de Habilidad */
-    .skill { margin-bottom: 16px; }
-    .skill-name { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 6px; font-size: 0.9rem; }
-    .progress-bar {
+    .skill-box { margin-bottom: 18px; }
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .progress-track {
+      background: #f0f0f0;
       height: 8px;
-      background: #eee;
       border-radius: 4px;
       overflow: hidden;
     }
-    .progress {
+    .progress-fill {
       height: 100%;
-      background: var(--accent-color);
+      background: var(--accent);
       border-radius: 4px;
     }
 
     /* --- PROYECTOS --- */
-    .projects-section {
-      padding: 60px 0 100px;
-    }
-    .section-header { text-align: center; margin-bottom: 50px; }
-    
+    .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 10px; }
+    .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 50px; }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 30px;
+      margin-bottom: 80px;
     }
 
     .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 24px;
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      overflow: hidden;
       transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
+      height: 100%;
     }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow);
-      border-color: var(--accent-color);
-    }
-    .card h3 { font-size: 1.25rem; margin-bottom: 10px; }
-    .card p { font-size: 0.95rem; color: var(--muted-text); margin-bottom: 20px; flex-grow: 1; }
+    .card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); }
+
+    .card-body { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+    .card h3 { font-size: 1.3rem; margin-bottom: 10px; }
     
-    .tags span {
+    .tag {
       font-size: 0.75rem;
       background: #f4f4f4;
-      padding: 4px 10px;
-      border-radius: 20px;
-      margin-right: 6px;
-      color: #555;
-    }
-    
-    .card-links {
-      margin-top: 20px;
-      padding-top: 16px;
-      border-top: 1px solid #f0f0f0;
-    }
-    .card-links a {
-      text-decoration: none;
-      color: var(--accent-color);
+      padding: 4px 8px;
+      border-radius: 4px;
+      color: var(--text-muted);
       font-weight: 700;
-      font-size: 0.9rem;
-      margin-right: 15px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: inline-block;
     }
-    .card-links a:hover { text-decoration: underline; }
+    .tag.highlight { background: #fdf6e9; color: var(--accent-hover); }
+
+    .card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px; flex-grow: 1; }
+
+    .card-footer {
+      border-top: 1px solid var(--border-light);
+      padding: 15px 25px;
+      background: #fafafa;
+      display: flex;
+      justify-content: space-between;
+    }
+    .link-proj { font-size: 0.9rem; font-weight: 700; color: var(--accent); }
+    .link-proj:hover { color: var(--accent-hover); text-decoration: underline; }
 
     /* --- FOOTER --- */
-    footer {
-      background: var(--primary-text);
-      color: #fff;
+    .footer-cta {
+      background: var(--text-main);
+      color: var(--white);
+      padding: 60px 0;
       text-align: center;
-      padding: 60px 20px;
+      border-radius: var(--radius);
     }
-    footer h2 { color: #fff; margin-bottom: 24px; }
-    .social-links a {
-      color: #fff;
-      font-size: 1.5rem;
-      margin: 0 12px;
-      transition: opacity 0.3s;
-    }
-    .social-links a:hover { opacity: 0.7; }
+    .footer-cta h2 { color: var(--white); }
+    .footer-cta p { color: #aaa; margin-bottom: 24px; }
     
-    /* Responsive */
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border-light);
+      margin-top: 60px;
+    }
+
     @media (max-width: 768px) {
       .hero h1 { font-size: 2.5rem; }
-      .about-section { grid-template-columns: 1fr; gap: 40px; }
-      .btn-group { flex-direction: column; }
-      .btn { justify-content: center; width: 100%; }
+      .about-container { grid-template-columns: 1fr; gap: 40px; }
+      .nav-flex { flex-direction: column; gap: 15px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <nav>
-      <div class="brand">Deysi Velásquez.</div>
-      <div class="nav-links">
-        <a href="#sobre-mi">Sobre mí</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#contacto">Contacto</a>
-      </div>
-    </nav>
-  </div>
+  <header>
+    <div class="container nav-flex">
+      <div class="brand">Deysi Carolina.</div>
+      <nav>
+        <ul>
+          <li><a href="#inicio" class="active">Inicio</a></li>
+          <li><a href="#proyectos">Portafolio</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  <header class="hero">
-    <div class="container">
-      <img src="https://via.placeholder.com/260x260.png?text=Deysi" alt="Foto de Deysi" class="avatar">
+  <main class="container">
+    
+    <section id="inicio" class="hero">
+      <h4>Portafolio Profesional</h4>
+      <h1>Hola, soy Deysi Carolina<br>Desarrolladora Web</h1>
+      <p>Creando interfaces limpias y soluciones backend funcionales. Especializada en Django, despliegues en nube y trabajo colaborativo.</p>
       
-      <h1>Desarrolladora Web <br><span style="color:var(--accent-color); font-style:italic;">& Estudiante</span></h1>
-      <p>Creando interfaces limpias, código backend eficiente en Python y soluciones web modernas.</p>
-      
-      <div class="btn-group">
-        <a href="#proyectos" class="btn btn-primary">Ver Portafolio</a>
+      <div class="hero-buttons">
+        <a href="https://deysi.pythonanywhere.com/jardineros/" target="_blank" class="btn btn-primary">
+          <i class="fas fa-desktop"></i> Ver Demo en Vivo
+        </a>
         
         <a href="https://www.linkedin.com/" target="_blank" class="btn btn-linkedin">
           <i class="fab fa-linkedin"></i> LinkedIn
         </a>
-      </div>
-    </div>
-  </header>
 
-  <section id="sobre-mi" class="container">
-    <div class="about-section">
-      <div class="about-text">
-        <h2>Sobre mí</h2>
-        <p>Hola, soy Deysi Carolina Velásquez Varela, tengo 21 años y soy una apasionada del desarrollo web. Mi enfoque combina la lógica del backend con Python y la estética del frontend limpio.</p>
-        <p>Actualmente estoy profundizando mis conocimientos en despliegue de aplicaciones en la nube (como PythonAnywhere) y trabajo colaborativo mediante Git/GitLab.</p>
+        <a href="#proyectos" class="btn btn-outline">Ver Proyectos</a>
+      </div>
+    </section>
+
+    <section class="about-container">
+      <div class="about-info">
+        <h3>Sobre mí</h3>
+        <p>Soy una desarrolladora web apasionada por crear aplicaciones funcionales y bien estructuradas. Mi enfoque combina la lógica del backend con Python y la estética del frontend limpio.</p>
+        <p>Actualmente me encuentro ampliando mis conocimientos en despliegue de aplicaciones y metodologías ágiles.</p>
         
-        <div style="margin-top: 30px;">
-          <h3 style="font-size:1.2rem; margin-bottom:10px;">Educación</h3>
-          <p style="margin-bottom:0;"><strong>Desarrollo de Software</strong></p>
-          <p class="muted-text">Institución Educativa (En curso)</p>
+        <div class="education-box">
+          <h4 style="font-size:1rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">Educación</h4>
+          <strong>Tecnología en Desarrollo de Software</strong>
+          <span style="color:var(--text-muted); font-size:0.95rem;">En curso — Ecuador</span>
         </div>
       </div>
 
-      <div class="skills">
-        <h3 style="margin-bottom: 20px;">Habilidades Técnicas</h3>
+      <div class="about-skills">
+        <h3>Habilidades</h3>
         
-        <div class="skill">
-          <div class="skill-name"><span>HTML5 & CSS3</span> <span>90%</span></div>
-          <div class="progress-bar"><div class="progress" style="width: 90%"></div></div>
+        <div class="skill-box">
+          <div class="skill-header"><span>HTML5 & CSS3</span> <span>90%</span></div>
+          <div class="progress-track"><div class="progress-fill" style="width: 90%;"></div></div>
         </div>
         
-        <div class="skill">
-          <div class="skill-name"><span>Python & Django</span> <span>80%</span></div>
-          <div class="progress-bar"><div class="progress" style="width: 80%"></div></div>
+        <div class="skill-box">
+          <div class="skill-header"><span>Python & Django</span> <span>85%</span></div>
+          <div class="progress-track"><div class="progress-fill" style="width: 85%;"></div></div>
         </div>
         
-        <div class="skill">
-          <div class="skill-name"><span>Git & GitLab</span> <span>75%</span></div>
-          <div class="progress-bar"><div class="progress" style="width: 75%"></div></div>
+        <div class="skill-box">
+          <div class="skill-header"><span>Git & GitLab</span> <span>75%</span></div>
+          <div class="progress-track"><div class="progress-fill" style="width: 75%;"></div></div>
         </div>
         
-        <div class="skill">
-          <div class="skill-name"><span>Diseño UI/UX Básico</span> <span>70%</span></div>
-          <div class="progress-bar"><div class="progress" style="width: 70%"></div></div>
+        <div class="skill-box">
+          <div class="skill-header"><span>Despliegue Web</span> <span>70%</span></div>
+          <div class="progress-track"><div class="progress-fill" style="width: 70%;"></div></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="proyectos" style="background-color: #fafafa;">
-    <div class="container projects-section">
-      <div class="section-header">
-        <h2>Mis Proyectos</h2>
-        <p style="color:var(--muted-text);">Una selección de trabajos académicos y personales.</p>
-      </div>
+    <section id="proyectos">
+      <h2 class="section-title">Proyectos Destacados</h2>
+      <p class="section-subtitle">Selección de repositorios en GitLab y aplicaciones desplegadas.</p>
 
       <div class="grid">
         
         <article class="card">
-          <h3>Gestión de Jardineros</h3>
-          <div class="tags"><span>Python</span> <span>Django</span> <span>Web App</span></div>
-          <br>
-          <p>Aplicación web completa con base de datos. Permite administrar personal y horarios. Desplegada funcionalmente en la nube.</p>
-          <div class="card-links">
-            <a href="https://deysi.pythonanywhere.com/jardineros/" target="_blank"><i class="fas fa-external-link-alt"></i> Ver Demo</a>
-            <a href="https://github.com/Carolina803/proyectos" target="_blank"><i class="fab fa-gitlab"></i> Código</a>
+          <div class="card-body">
+            <span class="tag highlight">Django & PythonAnywhere</span>
+            <h3>Gestión de Jardineros</h3>
+            <p>Aplicación web completa desplegada en vivo. Sistema de gestión con base de datos real. El mejor ejemplo de mis capacidades actuales.</p>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Carolina803/proyectos" target="_blank" class="link-proj">Ver Código</a>
+            <a href="https://deysi.pythonanywhere.com/jardineros/" target="_blank" class="link-proj">Ver Demo Live →</a>
           </div>
         </article>
 
         <article class="card">
-          <h3>Center Adoption</h3>
-          <div class="tags"><span>Colaborativo</span> <span>HTML/CSS</span></div>
-          <br>
-          <p>Plataforma para centros de adopción. Proyecto realizado en equipo utilizando metodologías ágiles y control de versiones.</p>
-          <div class="card-links">
-            <a href="https://gitlab.com/mbue-j2d-group/center_adoption" target="_blank">Ver Repositorio →</a>
+          <div class="card-body">
+            <span class="tag">GitLab Colaborativo</span>
+            <h3>Center Adoption</h3>
+            <p>Sistema para centros de adopción. Desarrollo en equipo utilizando control de versiones y metodologías ágiles.</p>
+          </div>
+          <div class="card-footer">
+            <a href="https://gitlab.com/mbue-j2d-group/center_adoption" target="_blank" class="link-proj">Ver Repositorio</a>
           </div>
         </article>
 
         <article class="card">
-          <h3>Zona Segura</h3>
-          <div class="tags"><span>Backend</span> <span>Seguridad</span></div>
-          <br>
-          <p>Sistema de gestión enfocado en la seguridad de zonas geográficas específicas. Lógica de negocio robusta.</p>
-          <div class="card-links">
-            <a href="https://gitlab.com/mbue-j2d-group/zonasegura" target="_blank">Ver Repositorio →</a>
+          <div class="card-body">
+            <span class="tag">Práctica Personal</span>
+            <h3>Cuidado Plantas</h3>
+            <p>Repositorio personal enfocado en lógica de negocio para el cuidado y mantenimiento de plantas.</p>
+          </div>
+          <div class="card-footer">
+            <a href="https://gitlab.com/CarolinaVelasquez/cuidado_plantas" target="_blank" class="link-proj">Ver Repositorio</a>
           </div>
         </article>
 
         <article class="card">
-          <h3>Murales Urbanos</h3>
-          <div class="tags"><span>Frontend</span> <span>Arte</span></div>
-          <br>
-          <p>Catálogo digital para la visualización de arte urbano. Enfoque en el diseño visual y la estructura de datos multimedia.</p>
-          <div class="card-links">
-            <a href="https://gitlab.com/CarolinaVelasquez/muralesurbanos" target="_blank">Ver Repositorio →</a>
+          <div class="card-body">
+            <span class="tag">Gestión MBUE</span>
+            <h3>ZonaSegura</h3>
+            <p>Proyecto académico orientado a la seguridad en zonas específicas. Trabajo grupal con enfoque en backend.</p>
+          </div>
+          <div class="card-footer">
+            <a href="https://gitlab.com/mbue-j2d-group/zonasegura" target="_blank" class="link-proj">Ver Repositorio</a>
           </div>
         </article>
+
+        <article class="card">
+          <div class="card-body">
+            <span class="tag">Turismo</span>
+            <h3>Puntos Turísticos</h3>
+            <p>Versión personal del sistema de gestión turística. Manejo de ubicaciones y datos de interés.</p>
+          </div>
+          <div class="card-footer">
+            <a href="https://gitlab.com/CarolinaVelasquez/puntos_turisticos" target="_blank" class="link-proj">Ver Repositorio</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <span class="tag">Arte Urbano</span>
+            <h3>Murales Urbanos</h3>
+            <p>Catálogo digital de arte urbano. Proyecto personal para practicar estructuración de datos multimedia.</p>
+          </div>
+          <div class="card-footer">
+            <a href="https://gitlab.com/CarolinaVelasquez/muralesurbanos" target="_blank" class="link-proj">Ver Repositorio</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <span class="tag">Académico</span>
+            <h3>Evaluacion2CV</h3>
+            <p>Repositorio de evaluación académica demostrando conocimientos fundamentales de programación.</p>
+          </div>
+          <div class="card-footer">
+            <a href="https://gitlab.com/CarolinaVelasquez/evaluacion2cv" target="_blank" class="link-proj">Ver Repositorio</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="contacto" class="footer-cta">
+      <div class="container">
+        <h2>¿Listo para trabajar juntos?</h2>
+        <p>Actualmente disponible para prácticas profesionales o puestos Junior.</p>
+        <p style="font-size: 1.2rem; font-weight: bold;">Tel: 0983534700</p>
         
-        <article class="card">
-          <h3>Cuidado Plantas</h3>
-          <div class="tags"><span>Personal</span> <span>Práctica</span></div>
-          <br>
-          <p>Repositorio de prácticas enfocado en consejos y gestión para el cuidado de plantas domésticas.</p>
-          <div class="card-links">
-            <a href="https://gitlab.com/CarolinaVelasquez/cuidado_plantas" target="_blank">Ver Repositorio →</a>
-          </div>
-        </article>
-
+        <div style="margin-top: 20px;">
+          <a href="https://github.com/Carolina803" target="_blank" class="btn btn-outline" style="border-color: #fff; color: #fff;">GitHub</a>
+          <a href="https://www.linkedin.com/" target="_blank" class="btn btn-outline" style="border-color: #fff; color: #fff; margin-left: 10px;">LinkedIn</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer id="contacto">
+  </main>
+
+  <footer>
     <div class="container">
-      <h2>Hablemos</h2>
-      <p style="opacity: 0.8; margin-bottom: 30px;">
-        Estoy disponible para oportunidades laborales y proyectos freelance.<br>
-        Tel: <strong>0983534700</strong>
-      </p>
-      
-      <div class="social-links">
-        <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/Carolina803" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="mailto:tu-email@ejemplo.com"><i class="fas fa-envelope"></i></a>
-      </div>
-
-      <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.5;">
-        © 2025 Deysi Carolina Velásquez Varela.
-      </p>
+      <p>© <span id="year"></span> Deysi Carolina Velásquez Varela.</p>
+      <p style="font-size: 0.8rem; opacity: 0.7;">Diseño Profesional</p>
     </div>
   </footer>
 
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
