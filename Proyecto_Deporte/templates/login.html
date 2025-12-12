@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar sesión</title>
+
+    <!-- Estilos -->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: radial-gradient(circle at top left, #ced2d5ff, #dedfe0ff 40%, #e2e4e7ff 80%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .login-wrapper {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 25px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-card {
+            background: #ffffff;
+            width: 380px;
+            border-radius: 20px;
+            padding: 30px 35px 35px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-card::before {
+            content: "";
+            position: absolute;
+            top: -70px;
+            right: -80px;
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg,#4dabff,#1565c0);
+            opacity: 0.5;
+            border-radius: 50%;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .avatar-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            background: linear-gradient(135deg,#4dabff,#1565c0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 32px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+        }
+
+        .login-header h2 {
+            margin: 0;
+            font-size: 22px;
+            color: #222;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: #777;
+            margin-top: 4px;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 4px;
+            color: #555;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px 11px;
+            border-radius: 10px;
+            border: 1px solid #cfd3dc;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .input-group input:focus {
+            border-color: #1a73e8;
+            box-shadow: 0 0 0 2px rgba(26,115,232,0.15);
+        }
+
+        .error-text {
+            display: block;
+            margin-top: 4px;
+            font-size: 12px;
+            color: #d32f2f;
+        }
+
+        .server-error {
+            color: #d32f2f;
+            background: #ffebee;
+            border-radius: 10px;
+            padding: 8px 10px;
+            font-size: 13px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .login-footer {
+            margin-top: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-btn {
+            width: 100%;
+            background: #1a73e8;
+            border: none;
+            color: white;
+            padding: 11px 0;
+            font-size: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 6px 14px rgba(26,115,232,0.35);
+            transition: all 0.2s ease;
+        }
+
+        .login-btn:hover {
+            background: #1558b0;
+            box-shadow: 0 8px 18px rgba(21,88,176,0.45);
+            transform: translateY(-1px);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(21,88,176,0.35);
+        }
+
+        .helper-text {
+            margin-top: 8px;
+            font-size: 12px;
+            text-align: center;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-wrapper">
+    <div class="login-card">
+        <div class="login-header">
+            <div class="avatar-circle">
+                <span>👤</span>
+            </div>
+            <h2>Iniciar sesión</h2>
+            <div class="subtitle">Panel administrativo deportivo</div>
+        </div>
+
+        {% if form.errors %}
+            <div class="server-error">
+                Usuario o contraseña incorrectos.
+            </div>
+        {% endif %}
+
+        <form id="loginForm" method="post">
+            {% csrf_token %}
+
+            <div class="input-group">
+                <label for="id_username">Usuario</label>
+                <input type="text" name="username" id="id_username" autocomplete="username">
+            </div>
+
+            <div class="input-group">
+                <label for="id_password">Contraseña</label>
+                <input type="password" name="password" id="id_password" autocomplete="current-password">
+            </div>
+
+            <div class="login-footer">
+                <button type="submit" class="login-btn">Entrar</button>
+                <div class="helper-text">
+                    Usa tu usuario de administrador para acceder al sistema.
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- jQuery + jQuery Validation (CDN) -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
+<script>
+    $(function () {
+        $("#loginForm").validate({
+            rules: {
+                username: {
+                    required: true
+                },
+                password: {
+                    required: true,
+                    minlength: 3
+                }
+            },
+            messages: {
+                username: {
+                    required: "Por favor, ingresa tu usuario."
+                },
+                password: {
+                    required: "Por favor, ingresa tu contraseña.",
+                    minlength: "La contraseña debe tener al menos 3 caracteres."
+                }
+            },
+            errorElement: "span",
+            errorClass: "error-text",
+            highlight: function (element) {
+                $(element).addClass("input-error");
+            },
+            unhighlight: function (element) {
+                $(element).removeClass("input-error");
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

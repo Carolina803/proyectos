@@ -1,0 +1,90 @@
+{% extends "./plantilla.html" %}
+
+{% block titulo %}
+<h1 class="display-1 text-secondary text-center mb-0">Listado de Deportistas</h1>
+{% endblock %}
+
+{% block contenido %}
+
+{% if messages %}
+{% for mensaje in messages %}
+<script>
+    Swal.fire({
+        title: "¡Éxito!",
+        text: "{{ mensaje }}",
+        icon: "success"
+    });
+</script>
+{% endfor %}
+{% endif %}
+
+<div class="text-end mb-3">
+    <a href="{% url 'nuevoDe' %}" class="btn btn-primary">Nuevo Deportista</a>
+</div>
+
+<table class="table table-bordered table-striped table-hover" id="tbl_deportistas">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>PAÍS</th>
+            <th>DISCIPLINA</th>
+            <th>FECHA NACIMIENTO</th>
+            <th>ESTATURA (cm)</th>
+            <th>PESO (kg)</th>
+            <th>ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for deportista in deportistas %}
+        <tr>
+            <td>{{ deportista.id }}</td>
+            <td>{{ deportista.nombre }}</td>
+            <td>{{ deportista.pais.nombre }}</td>
+            <td>{{ deportista.disciplina.nombre }}</td>
+            <td>{{ deportista.fecha_nacimiento|date:'Y-m-d' }}</td>
+            <td>{{ deportista.estatura_cm }}</td>
+            <td>{{ deportista.peso_kg }}</td>
+            <td>
+                <a class="btn btn-warning" href="{% url 'editarDe' deportista.id %}">
+                    <i class="fa fa-pen"></i> Editar
+                </a>
+                <a href="#" onclick="confirmarEliminacion('{% url 'eliminarDe' deportista.id %}')" 
+                   class="btn btn-danger">
+                    <i class="fa fa-trash"></i> Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script>
+    function confirmarEliminacion(url) {
+        Swal.fire({
+            title: "¿Estás seguro?",
+            text: "¡No podrás revertir esto!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sí, eliminar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = url;
+            }
+        });
+    }
+</script>
+
+<script>
+    $('#tbl_deportistas').DataTable({
+        dom: 'Bfrtip',
+        buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+        language: {
+            url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json'
+        }
+    });
+</script>
+
+{% endblock %}

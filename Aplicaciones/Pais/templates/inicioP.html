@@ -1,0 +1,77 @@
+{% extends "./plantilla.html" %}
+
+{% block titulo %}
+<h1 class="display-1 text-secondary text-center mb-0">Listado de Países</h1>
+{% endblock %}
+
+{% block contenido %}
+
+{% if messages %}
+{% for mensaje in messages %}
+<script>
+    Swal.fire({
+        title: "{% if 'error' in mensaje.tags %}Error{% else %}¡Éxito!{% endif %}",
+        text: "{{ mensaje }}",
+        icon: "{% if 'error' in mensaje.tags %}error{% else %}success{% endif %}"
+    });
+</script>
+{% endfor %}
+{% endif %}
+
+<div class="text-end mb-3">
+    <a href="{% url 'nuevoP' %}" class="btn btn-primary">Nuevo País</a>
+</div>
+
+<table class="table table-bordered table-striped table-hover" id="tbl_paises">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pais in paises %}
+        <tr>
+            <td>{{ pais.id }}</td>
+            <td>{{ pais.nombre }}</td>
+            <td>
+                <a class="btn btn-warning" href="{% url 'editarP' pais.id %}">
+                    <i class="fa fa-pen"></i> Editar
+                </a>
+                <a href="#" onclick="confirmarEliminacion('{% url 'eliminarP' pais.id %}')" class="btn btn-danger">
+                    <i class="fa fa-trash"></i> Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script>
+    function confirmarEliminacion(url) {
+        Swal.fire({
+            title: "¿Estás seguro?",
+            text: "¡No podrás revertir esto!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sí, eliminar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = url;
+            }
+        });
+    }
+</script>
+
+<script>
+    $('#tbl_paises').DataTable({
+        dom: 'Bfrtip',
+        buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+        language: { url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json' }
+    });
+</script>
+
+{% endblock %}

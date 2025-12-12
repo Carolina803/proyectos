@@ -1,0 +1,66 @@
+{% extends "./plantilla.html" %}
+
+{% block titulo %}
+<h1 class="display-1 text-secondary text-center mb-0">Editar Disciplina</h1>
+{% endblock %}
+
+{% block contenido %}
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 bg-light p-4 rounded">
+
+        <form action="{% url 'procesarEdicionD' %}" method="post" id="formEditarDisciplina">
+            {% csrf_token %}
+
+            <input type="hidden" name="id" value="{{ disciplina.id }}">
+
+            <label for="nombre">Nombre:</label>
+            <input class="form-control" type="text" name="nombre" id="nombre" value="{{ disciplina.nombre }}">
+            <br>
+
+            <button class="btn btn-success w-100" type="submit">Editar</button>
+            <br><br>
+            <a href="{% url 'inicioD' %}" class="btn btn-outline-danger w-100">Cancelar</a>
+        </form>
+
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+<script>
+    jQuery.validator.addMethod("soloLetras", function(value, element) {
+        return this.optional(element) || /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(value);
+    });
+
+    $("#formEditarDisciplina").validate({
+        rules: {
+            nombre: {
+                required: true,
+                minlength: 3,
+                maxlength: 100,
+                soloLetras: true
+            }
+        },
+        messages: {
+            nombre: {
+                required: "El nombre es obligatorio",
+                minlength: "Debe tener al menos 3 caracteres",
+                maxlength: "No puede exceder 100 caracteres",
+                soloLetras: "Solo se permiten letras"
+            }
+        },
+        errorElement: "div",
+        errorPlacement: function(error, element) {
+            error.addClass("invalid-feedback");
+            element.after(error);
+        },
+        highlight: function(element) {
+            $(element).addClass("is-invalid");
+        },
+        unhighlight: function(element) {
+            $(element).removeClass("is-invalid");
+        }
+    });
+</script>
+
+{% endblock %}

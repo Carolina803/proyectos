@@ -1,0 +1,82 @@
+{% extends "./plantilla.html" %}
+
+{% block titulo %}
+<h1 class="display-1 text-secondary text-center mb-0">Listado de Disciplinas</h1>
+
+{% endblock %}
+
+{% block contenido %}
+
+{% if messages %}
+{% for mensaje in messages %}
+<script>
+    Swal.fire({
+        title: "{% if 'error' in mensaje.tags %}Error{% else %}¡Éxito!{% endif %}",
+        text: "{{ mensaje }}",
+        icon: "{% if 'error' in mensaje.tags %}error{% else %}success{% endif %}"
+    });
+</script>
+{% endfor %}
+{% endif %}
+
+<div class="text-end mb-3">
+    <a href="{% url 'nuevoD' %}" class="btn btn-primary">Nueva Disciplina</a>
+</div>
+
+<table class="table table-bordered table-striped table-hover" id="tbl_disciplinas">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for disciplina in disciplinas %}
+        <tr>
+            <td>{{ disciplina.id }}</td>
+            <td>{{ disciplina.nombre }}</td>
+            <td>
+                <a class="btn btn-warning btn-sm" href="{% url 'editarD' disciplina.id %}">
+                    <i class="fa fa-pen"></i> Editar
+                </a>
+                <a href="#" onclick="confirmarEliminacion('{% url 'eliminarD' disciplina.id %}')" 
+                   class="btn btn-danger btn-sm">
+                    <i class="fa fa-trash"></i> Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script>
+    function confirmarEliminacion(url) {
+        Swal.fire({
+            title: "¿Estás seguro?",
+            text: "Esta acción no se puede revertir",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sí, eliminar",
+            cancelButtonText: "Cancelar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = url;
+            }
+        });
+    }
+</script>
+
+<script>
+    $('#tbl_disciplinas').DataTable({
+        dom: 'Bfrtip',
+        buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+        language: {
+            url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json'
+        }
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "./plantilla.html" %}
+
+{% block titulo %}
+<h1 class="display-1 text-secondary text-center mb-0">Editar País</h1>
+{% endblock %}
+
+{% block contenido %}
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 bg-light p-4 rounded">
+
+        <form action="{% url 'procesarEdicionP' %}" method="post" id="formEditarPais">
+            {% csrf_token %}
+
+            <input type="hidden" name="id" value="{{ pais.id }}">
+
+            <label for="nombre">Nombre:</label>
+            <input class="form-control" type="text" name="nombre" id="nombre" value="{{ pais.nombre }}">
+            <br>
+
+            <button class="btn btn-success w-100" type="submit">Editar</button>
+            <br><br>
+            <a href="{% url 'inicioP' %}" class="btn btn-outline-danger w-100">Cancelar</a>
+        </form>
+
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+<script>
+    jQuery.validator.addMethod("soloLetras", function(value, element) {
+        return this.optional(element) || /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(value);
+    });
+
+    $("#nombre").on("keypress", function(e) {
+        let c = String.fromCharCode(e.which);
+        if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]$/.test(c)) {
+            e.preventDefault();
+        }
+    });
+
+    $("#formEditarPais").validate({
+        rules: {
+            nombre: {
+                required: true,
+                minlength: 3,
+                maxlength: 100,
+                soloLetras: true
+            }
+        },
+        messages: {
+            nombre: {
+                required: "El nombre es obligatorio",
+                minlength: "Debe tener al menos 3 caracteres",
+                maxlength: "No puede exceder 100 caracteres",
+                soloLetras: "Solo se permiten letras "
+            }
+        }
+    });
+</script>
+
+{% endblock %}

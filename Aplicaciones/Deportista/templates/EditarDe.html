@@ -1,0 +1,151 @@
+{% extends "./plantilla.html" %}
+
+{% block titulo %}
+<h1 class="display-1 text-secondary text-center mb-0">Editar Deportista</h1>
+{% endblock %}
+
+{% block contenido %}
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 bg-light p-4 rounded">
+
+        <form action="{% url 'procesarEdicionDe' %}" method="post" id="formEditarDeportista">
+            {% csrf_token %}
+
+            <input type="hidden" name="id" value="{{ deportista.id }}">
+
+            <label for="nombre">Nombre:</label>
+            <input class="form-control" type="text" name="nombre" id="nombre" value="{{ deportista.nombre }}">
+            <br>
+
+            <label for="pais">País:</label>
+            <select class="form-control" name="pais" id="pais">
+                <option value="">Seleccione un país</option>
+                {% for pais in paises %}
+                <option value="{{ pais.id }}" {% if pais.id == deportista.pais.id %}selected{% endif %}>
+                    {{ pais.nombre }}
+                </option>
+                {% endfor %}
+            </select>
+            <br>
+
+            <label for="disciplina">Disciplina:</label>
+            <select class="form-control" name="disciplina" id="disciplina">
+                <option value="">Seleccione una disciplina</option>
+                {% for disciplina in disciplinas %}
+                <option value="{{ disciplina.id }}" {% if disciplina.id == deportista.disciplina.id %}selected{% endif %}>
+                    {{ disciplina.nombre }}
+                </option>
+                {% endfor %}
+            </select>
+            <br>
+
+            <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+            <input class="form-control" type="date" name="fecha_nacimiento" id="fecha_nacimiento"
+                   value="{{ deportista.fecha_nacimiento|date:'Y-m-d' }}">
+            <br>
+
+            <label for="estatura_cm">Estatura (cm):</label>
+            <input class="form-control" type="number" name="estatura_cm" id="estatura_cm"
+                   value="{{ deportista.estatura_cm }}">
+            <br>
+
+            <label for="peso_kg">Peso (kg):</label>
+            <input class="form-control" type="number" name="peso_kg" id="peso_kg"
+                   value="{{ deportista.peso_kg }}">
+            <br>
+
+            <button class="btn btn-success w-100" type="submit">Editar</button>
+            <br><br>
+            <a href="{% url 'inicioDe' %}" class="btn btn-outline-danger w-100">Cancelar</a>
+        </form>
+
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+<script>
+    jQuery.validator.addMethod("soloLetras", function(value, element) {
+        return this.optional(element) || /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(value);
+    }, "Solo se permiten letras y espacios");
+
+    jQuery.validator.addMethod("soloNumeros", function(value, element) {
+        return this.optional(element) || /^[0-9]+$/.test(value);
+    }, "Solo se permiten números");
+
+    $("#formEditarDeportista").validate({
+        rules: {
+            nombre: {
+                required: true,
+                minlength: 3,
+                maxlength: 150,
+                soloLetras: true
+            },
+            pais: {
+                required: true
+            },
+            disciplina: {
+                required: true
+            },
+            fecha_nacimiento: {
+                required: true,
+                date: true
+            },
+            estatura_cm: {
+                required: true,
+                soloNumeros: true,
+                min: 50,
+                max: 200
+            },
+            peso_kg: {
+                required: true,
+                soloNumeros: true,
+                min: 1,
+                max: 500
+            }
+        },
+        messages: {
+            nombre: {
+                required: "El nombre es obligatorio",
+                minlength: "Debe tener al menos 3 caracteres",
+                maxlength: "No puede exceder 150 caracteres",
+                soloLetras: "Solo se permiten letras y espacios"
+            },
+            pais: {
+                required: "El país es obligatorio"
+            },
+            disciplina: {
+                required: "La disciplina es obligatoria"
+            },
+            fecha_nacimiento: {
+                required: "La fecha de nacimiento es obligatoria",
+                date: "Ingrese una fecha válida"
+            },
+            estatura_cm: {
+                required: "La estatura es obligatoria",
+                soloNumeros: "Debe contener solo números",
+                min: "La estatura mínima es 50 cm",
+                max: "La estatura máxima es 200 cm (2 metros)"
+            },
+            peso_kg: {
+                required: "El peso es obligatorio",
+                soloNumeros: "Debe contener solo números",
+                min: "El peso mínimo es 1 kg",
+                max: "El peso máximo permitido es 500 kg"
+            }
+        },
+        errorElement: "div",
+        errorPlacement: function(error, element) {
+            error.addClass("invalid-feedback");
+            element.after(error);
+        },
+        highlight: function(element) {
+            $(element).addClass("is-invalid");
+        },
+        unhighlight: function(element) {
+            $(element).removeClass("is-invalid");
+        }
+    });
+</script>
+
+{% endblock %}

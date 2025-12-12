@@ -1,0 +1,382 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="stylesheet" href="//cdn.datatables.net/2.3.1/css/dataTables.dataTables.min.css">
+    <script src="//cdn.datatables.net/2.3.1/js/dataTables.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.4/js/fileinput.min.js"
+        integrity="sha512-0wQvB58Ha5coWmcgtg4f11CTSSxfrfLClUp9Vy0qhzYzCZDSnoB4Vhu5JXJFs7rU24LE6JsH+6hpP7vQ22lk5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.4/css/fileinput.min.css"
+        integrity="sha512-yDVMONIXJPPAoULZ92Ygngsn8ZUGB4ejm6fCc6q9ZvdH8blFAOgg75XZSEaAJ5m4E/yPI1BAi5fF2axMHVuZ5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.4/js/locales/es.min.js"></script>
+
+    <title>Panel Administrativo Deportistas</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Panel administrativo" name="keywords">
+    <meta content="Panel administrativo" name="description">
+
+    <link href="{% static 'plantilla/Ch/img/favicon.ico' %}" rel="icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Emblema+One&family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="{% static 'plantilla/Ch/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plantilla/Ch/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'plantilla/Ch/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plantilla/Ch/css/style.css' %}" rel="stylesheet">
+
+    <style>
+        :root {
+            --sidebar-bg: #1F2937;
+            --sidebar-active: #111827;
+            --main-bg: #F3F4F6;
+            --panel-bg: #FFFFFF;
+            --text-main: #111827;
+            --text-soft: #6B7280;
+            --primary: #3B82F6;
+            --danger: #EF4444;
+            --warning: #F59E0B;
+            --success: #10B981;
+        }
+
+        body {
+            margin: 0;
+            background: var(--main-bg);
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+        }
+
+        .dashboard-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 220px;
+            background: var(--sidebar-bg);
+            color: #E5E7EB;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            padding: 12px 18px;
+            border-bottom: 1px solid #374151;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sidebar-header i {
+            font-size: 16px;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            padding: 8px 18px;
+            font-size: 13px;
+            color: #D1D5DB;
+            text-decoration: none;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background: var(--sidebar-active);
+            color: #FFFFFF;
+        }
+
+        .main-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .topbar {
+            height: 56px;
+            background: #FFFFFF;
+            border-bottom: 1px solid #E5E7EB;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 18px;
+        }
+
+        .topbar-title {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .topbar-subtitle {
+            font-size: 11px;
+            color: var(--text-soft);
+        }
+
+        .topbar-info {
+            font-size: 11px;
+            color: var(--text-soft);
+        }
+
+        .topbar-info i {
+            color: var(--primary);
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 18px;
+            padding-bottom: 110px;
+        }
+
+        .content-panel {
+            background: var(--panel-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+            padding: 14px 16px;
+        }
+
+        .page-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .page-subtitle {
+            font-size: 11px;
+            color: var(--text-soft);
+        }
+
+        .display-1 {
+            font-size: 2.1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        table.table {
+            font-size: 12px;
+        }
+
+        .dataTables_wrapper .dataTables_filter input,
+        .dataTables_wrapper .dataTables_length select {
+            font-size: 11px !important;
+            padding: 4px 8px !important;
+            border-radius: 999px !important;
+            border: 1px solid #CBD5E1 !important;
+        }
+
+        .dataTables_wrapper .dataTables_info,
+        .dataTables_wrapper .dataTables_paginate {
+            font-size: 11px;
+        }
+
+        .btn-primary,
+        .btn-success,
+        .btn-warning,
+        .btn-danger {
+            font-size: 12px;
+            padding: 5px 14px;
+            border-radius: 999px;
+        }
+
+        .btn-warning {
+            background-color: var(--warning);
+            border-color: var(--warning);
+            color: #111827;
+        }
+
+        .btn-danger {
+            background-color: var(--danger);
+            border-color: var(--danger);
+            color: #FFFFFF;
+        }
+
+        .btn-success {
+            background-color: var(--success);
+            border-color: var(--success);
+        }
+
+        .footer-boletin {
+            position: fixed;
+            left: 220px;
+            right: 0;
+            bottom: 0;
+            background: #111827;
+            color: #E5E7EB;
+            border-top: 1px solid #1F2937;
+            padding: 10px 18px;
+            font-size: 11px;
+        }
+
+        .footer-boletin .form-control {
+            font-size: 11px;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+
+        .form-control.error {
+            border: 3px solid red;
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                display: none;
+            }
+
+            .footer-boletin {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard-wrapper">
+
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fa-solid fa-gauge"></i>
+                <span>Admin Sport</span>
+            </div>
+            <div class="sidebar-menu">
+                <a href="{% url 'inicioP' %}" class="{% if request.resolver_match.url_name == 'inicioP' %}active{% endif %}">
+                    <i class="fa fa-flag"></i> Países
+                </a>
+                <a href="{% url 'inicioD' %}" class="{% if request.resolver_match.url_name == 'inicioD' %}active{% endif %}">
+                    <i class="fa fa-medal"></i> Disciplinas
+                </a>
+                <a href="{% url 'inicioDe' %}" class="{% if request.resolver_match.url_name == 'inicioDe' %}active{% endif %}">
+                    <i class="fa fa-user"></i> Deportistas
+                </a>
+               
+                </form>
+
+            </div>
+        </aside>
+
+        <div class="main-panel">
+
+            <header class="topbar">
+                <div>
+                    <div class="topbar-title">Panel Administrativo Deportistas</div>
+                    <div class="topbar-subtitle">Gestión de países, disciplinas y deportistas</div>
+                </div>
+                <div class="d-none d-md-flex gap-3 topbar-info">
+                    <div><i class="fa fa-envelope me-1"></i> deysi.velasquez1417@utc.edu.ec.com</div>
+                    <div><i class="fa fa-phone-alt me-1"></i> 0983534700</div>
+                </div>
+            </header>
+
+            <main class="main-content">
+                <div class="content-panel">
+                    <div class="mb-2">
+                        {% block titulo %}
+                        {% endblock %}
+                        <div class="page-subtitle">Panel de control </div>
+                    </div>
+
+                    {% block contenido %}
+                    {% endblock %}
+                </div>
+            </main>
+
+            <div class="footer-boletin">
+                <div class="row align-items-center">
+                    <div class="col-md-4 text-center text-md-start mb-2 mb-md-0">
+                        <strong>Boletín Deportivo</strong>
+                    </div>
+                    <div class="col-md-5 text-center mb-2 mb-md-0">
+                        <span>Recibe noticias y actualizaciones en tu correo.</span>
+                    </div>
+                    <div class="col-md-3">
+                        <form action="">
+                            <div class="input-group input-group-sm">
+                                <input type="email" class="form-control" placeholder="Tu correo electrónico">
+                                <button class="btn btn-success">Suscribirme</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <a href="#" class="btn btn-dark py-2 px-3 fs-5 position-fixed" style="right:20px; bottom:100px;">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'plantilla/Ch/lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'plantilla/Ch/lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'plantilla/Ch/lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'plantilla/Ch/lib/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'plantilla/Ch/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'plantilla/Ch/js/main.js' %}"></script>
+
+    {% if messages %}
+    {% for mensaje in messages %}
+    <script>
+        Swal.fire({
+            title: "Mensaje",
+            text: "{{mensaje}}",
+            icon: "success"
+        });
+    </script>
+    {% endfor %}
+    {% endif %}
+
+</body>
+
+</html>

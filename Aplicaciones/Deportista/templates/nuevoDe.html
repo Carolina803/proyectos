@@ -1,0 +1,133 @@
+{% extends "./plantilla.html" %}
+
+{% block titulo %}
+<h1 class="display-1 text-secondary text-center mb-0">Nuevo Deportista</h1>
+{% endblock %}
+
+{% block contenido %}
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 bg-light p-4 rounded">
+
+        <form action="{% url 'guardarDeportista' %}" id="frm_nuevoDeportista" method="post">
+            {% csrf_token %}
+
+            <label for="nombre">Nombre:</label>
+            <input class="form-control" type="text" name="nombre" id="nombre" placeholder="Ingrese nombre del deportista">
+            <br>
+
+            <label for="pais">País:</label>
+            <select class="form-control" name="pais" id="pais">
+                <option value="">Seleccione un país</option>
+                {% for pais in paises %}
+                <option value="{{ pais.id }}">{{ pais.nombre }}</option>
+                {% endfor %}
+            </select>
+            <br>
+
+            <label for="disciplina">Disciplina:</label>
+            <select class="form-control" name="disciplina" id="disciplina">
+                <option value="">Seleccione una disciplina</option>
+                {% for disciplina in disciplinas %}
+                <option value="{{ disciplina.id }}">{{ disciplina.nombre }}</option>
+                {% endfor %}
+            </select>
+            <br>
+
+            <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+            <input class="form-control" type="date" name="fecha_nacimiento" id="fecha_nacimiento">
+            <br>
+
+            <label for="estatura_cm">Estatura (cm):</label>
+            <input class="form-control" type="number" name="estatura_cm" id="estatura_cm" placeholder="Ej: 180">
+            <br>
+
+            <label for="peso_kg">Peso (kg):</label>
+            <input class="form-control" type="number" name="peso_kg" id="peso_kg" placeholder="Ej: 75">
+            <br>
+
+            <button class="btn btn-success form-control" type="submit">Guardar</button>
+            <a href="{% url 'inicioDe' %}" class="btn btn-outline-danger mt-2">Cancelar</a>
+        </form>
+
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+<script>
+
+    jQuery.validator.addMethod("soloLetras", function(value, element) {
+        return this.optional(element) || /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(value);
+    });
+
+    jQuery.validator.addMethod("soloNumeros", function(value, element) {
+        return this.optional(element) || /^[0-9]+$/.test(value);
+    });
+
+    $("#frm_nuevoDeportista").validate({
+        rules: {
+            nombre: {
+                required: true,
+                minlength: 3,
+                maxlength: 150,
+                soloLetras: true
+            },
+            pais: {
+                required: true
+            },
+            disciplina: {
+                required: true
+            },
+            fecha_nacimiento: {
+                required: true,
+                date: true
+            },
+            estatura_cm: {
+                required: true,
+                soloNumeros: true,
+                min: 50,
+                max: 200
+            },
+            peso_kg: {
+                required: true,
+                soloNumeros: true,
+                min: 1,
+                max: 500
+            }
+        },
+        messages: {
+            nombre: {
+                required: "El nombre es obligatorio",
+                minlength: "Debe tener al menos 3 caracteres",
+                maxlength: "No puede exceder 150 caracteres",
+                soloLetras: "Solo se permiten letras y espacios"
+            },
+            pais: {
+                required: "El país es obligatorio"
+            },
+            disciplina: {
+                required: "La disciplina es obligatoria"
+            },
+            fecha_nacimiento: {
+                required: "La fecha de nacimiento es obligatoria",
+                date: "Ingrese una fecha válida"
+            },
+            estatura_cm: {
+                required: "La estatura es obligatoria",
+                soloNumeros: "Debe contener solo números",
+                min: "La estatura mínima es 50 cm",
+                max: "La estatura máxima es 200 cm (2 metros)"
+            },
+            peso_kg: {
+                required: "El peso es obligatorio",
+                soloNumeros: "Debe contener solo números",
+                min: "El peso mínimo es 1 kg",
+                max: "El peso máximo permitido es 500 kg"
+            }
+        }
+    });
+
+</script>
+
+{% endblock %}
